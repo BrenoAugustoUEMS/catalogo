@@ -29,35 +29,43 @@
  defined('MOODLE_INTERNAL') || die();
  
  /**
-  * Renderizador personalizado para o Catálogo.
-  */
- class local_catalogo_renderer {
-     private $courses;
- 
-     /**
-      * Construtor.
-      *
-      * @param array $courses Lista de cursos a serem exibidos.
-      */
-     public function __construct($courses) {
-         $this->courses = $courses;
-     }
- 
-     /**
-      * Retorna os dados formatados para o template.
-      *
-      * @return array Dados organizados para o template.
-      */
-     public function get_data() {
-         $formattedcourses = [];
-         foreach ($this->courses as $course) {
-             $formattedcourses[] = [
-                 'id' => $course->id,
-                 'fullname' => $course->fullname,
-                 'url' => (new moodle_url('/course/view.php', ['id' => $course->id]))->out(false),
-             ];
-         }
-         return ['courses' => $formattedcourses];
-     }
- }
+ * Renderizador personalizado para o Catálogo.
+ */
+class local_catalogo_renderer {
+    private $courses;
+
+    /**
+     * Construtor.
+     *
+     * @param array $courses Lista de cursos a serem exibidos.
+     */
+    public function __construct($courses) {
+        $this->courses = $courses;
+    }
+
+    /**
+     * Retorna os dados formatados para o template.
+     *
+     * @return array Dados organizados para o template.
+     */
+    public function get_data() {
+        $formattedcourses = [];
+        foreach ($this->courses as $course) {
+            $formattedcourses[] = [
+                'id' => $course->id,
+                'fullname' => $course->fullname,
+                'url' => (new moodle_url('/course/view.php', ['id' => $course->id]))->out(false),
+                'imageurl' => isset($course->imageurl) ? $course->imageurl : '', // URL da imagem (se existir)
+                'organization' => isset($course->organization) ? $course->organization : '', // Organização
+                'interests' => isset($course->tags) && !empty($course->tags), // Define se há interesses/tags
+                'tags' => isset($course->tags) ? $course->tags : [], // Lista de tags
+                'deadline' => isset($course->deadline) ? $course->deadline : '', // Prazo final
+                'extended' => isset($course->extended) ? $course->extended : false, // Indica se foi prorrogado
+                'extended_deadline' => isset($course->extended_deadline) ? $course->extended_deadline : '', // Prazo prorrogado
+            ];
+        }
+        return ['courses' => $formattedcourses];
+    }
+}
+
  

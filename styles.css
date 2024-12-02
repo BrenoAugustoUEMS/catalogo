@@ -57,6 +57,10 @@ body.local-catalogo #page-header {
 
 /* -------------------------------------- Container para busca e filtro -----------------------------------------------------*/
 
+.catalogo-page-wrapper {
+  padding: 0 3em;
+}
+
 #catalogo-filter-container {
   display: flex;
   flex-direction: row;
@@ -143,35 +147,117 @@ body.local-catalogo #page-header {
 
 /* -------------------------------------- Container da lista de editais -----------------------------------------------------*/
 
+/* Container principal */
 #catalogo-list-container {
-  background-color: var(--background-light);
-  border: 1px solid var(--border-color);
-  padding: 15px;
+  padding: 20px;
+  background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: var(--box-shadow-light);
 }
 
-#catalogo-list-container ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* Contador de editais */
+.catalogo-list-count {
+  font-size: 1rem;
+  color: var(--text-color-dark);
+  margin-bottom: 20px;
 }
 
-#catalogo-list-container li {
-  padding: 10px;
-  border-bottom: 1px solid var(--border-color);
+/* Lista de editais */
+.catalogo-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-#catalogo-list-container li:last-child {
-  border-bottom: none;
+/* Item de edital */
+.catalogo-list-item {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: var(--box-shadow-light);
+  gap: 20px;
 }
 
-#catalogo-list-container a {
+.catalogo-item-content {
+  display: flex;
+  gap: 15px;
+}
+
+.catalogo-item-image img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.catalogo-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.catalogo-item-title {
+  font-size: 1.2rem;
   color: var(--primary-color-dark);
+  font-weight: bold;
+}
+
+.catalogo-item-organization {
+  font-size: 0.9rem;
+  color: var(--text-color-muted);
+}
+
+.catalogo-item-interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.catalogo-tag {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 16px;
+  font-size: 0.8rem;
+}
+
+/* Botão de acesso */
+.catalogo-item-button {
+  background-color: var(--primary-color-dark);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-align: center;
   text-decoration: none;
   font-weight: bold;
 }
 
-#catalogo-list-container a:hover {
-  text-decoration: underline;
+.catalogo-item-button:hover {
+  background-color: var(--button-hover-color);
+}
+
+/* Paginação */
+.catalogo-pagination {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.catalogo-page-button {
+  background-color: var(--primary-color-dark);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+}
+
+.catalogo-page-button:disabled {
+  background-color: var(--secondary-color);
+  cursor: not-allowed;
 }

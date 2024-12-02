@@ -17,47 +17,107 @@
     <h1>EDITAIS</h1>
 </section>
 
-<!-- Container para a busca e o filtro -->
-<div id="catalogo-filter-container">
-
-    <!-- Seção de busca -->
-    <section id="catalogo-search-section">
-        <label for="catalogo-search">Buscar editais:</label>
-        <div class="catalogo-input-button-wrapper">
-            <input type="text" id="catalogo-search" name="search" placeholder="Digite palavras-chave">
-            <button type="submit">Buscar</button>
-        </div>
-    </section>
-
-    <!-- Seção de filtro por categorias -->
-    <section id="catalogo-filter-section">
-        <label for="catalogo-category">Filtrar por categoria:</label>
-        <div class="catalogo-input-button-wrapper">
-            <select id="catalogo-category" name="category">
-                <option value="">Todas as categorias</option>
-                {{#categories}}
-                <option value="{{id}}">{{name}}</option>
-                {{/categories}}
-            </select>
-            <button type="submit">Filtrar</button>
-        </div>
-    </section>
-</div>
-
-
-<!-- Container para a lista de editais -->
-<div id="catalogo-list-container">
-    <section id="catalogo-list-section">
-        <ul>
+<!-- Page Wrapper -->
+<div class="catalogo-page-wrapper">
+    
+    <!-- Container para a busca e o filtro -->
+    <div id="catalogo-filter-container">
+    
+        <!-- Seção de busca -->
+        <section id="catalogo-search-section">
+            <label for="catalogo-search">Buscar editais:</label>
+            <div class="catalogo-input-button-wrapper">
+                <input type="text" id="catalogo-search" name="search" placeholder="Digite palavras-chave">
+                <button type="submit">Buscar</button>
+            </div>
+        </section>
+    
+        <!-- Seção de filtro por categorias -->
+        <section id="catalogo-filter-section">
+            <label for="catalogo-category">Filtrar por categoria:</label>
+            <div class="catalogo-input-button-wrapper">
+                <select id="catalogo-category" name="category">
+                    <option value="">Todas as categorias</option>
+                    {{#categories}}
+                    <option value="{{id}}">{{name}}</option>
+                    {{/categories}}
+                </select>
+                <button type="submit">Filtrar</button>
+            </div>
+        </section>
+    </div>
+    
+    
+    <!-- Container principal da lista de editais -->
+    <div id="catalogo-list-container">
+    
+        <!-- Quantidade de editais encontrados -->
+        <p class="catalogo-list-count">67 editais encontrados.</p>
+    
+        <!-- Lista de editais -->
+        <div class="catalogo-list-wrapper">
+            <!-- Item de edital -->
             {{#courses}}
-            <li>
-                <a href="{{url}}">{{fullname}}</a>
-            </li>
+            <div class="catalogo-list-item">
+                <div class="catalogo-item-content">
+                    <!-- Imagem ou logotipo -->
+                    <a href="{{url}}" class="catalogo-item-image">
+                        <img src="{{imageurl}}" alt="Logotipo do edital {{fullname}}">
+                    </a>
+    
+                    <!-- Informações principais -->
+                    <div class="catalogo-item-info">
+                        <!-- Título do edital -->
+                        <a href="{{url}}">
+                            <h5 class="catalogo-item-title">{{fullname}}</h5>
+                        </a>
+                        <!-- Organização -->
+                        <p class="catalogo-item-organization">{{organization}}</p>
+    
+                        <!-- Áreas de Interesse -->
+                        {{#interests}}
+                        <div class="catalogo-item-interests">
+                            <p>Áreas de Interesse:</p>
+                            <div class="catalogo-interest-tags">
+                                {{#tags}}
+                                <span class="catalogo-tag">{{.}}</span>
+                                {{/tags}}
+                            </div>
+                        </div>
+                        {{/interests}}
+                    </div>
+                </div>
+    
+                <!-- Informações adicionais e botão -->
+                <div class="catalogo-item-extra">
+                    <!-- Prazo de inscrição -->
+                    <div class="catalogo-item-dates">
+                        <p class="catalogo-deadline">
+                            Inscrições até: <strong>{{deadline}}</strong>
+                        </p>
+                        {{#extended}}
+                        <p class="catalogo-deadline-extended">
+                            Inscrições prorrogadas até: <strong>{{extended_deadline}}</strong>
+                        </p>
+                        {{/extended}}
+                    </div>
+    
+                    <!-- Botão de acesso -->
+                    <a href="{{url}}" class="catalogo-item-button">Acessar</a>
+                </div>
+            </div>
             {{/courses}}
-
-            {{^courses}}
-            <p>Nenhum edital disponível no momento.</p>
-            {{/courses}}
-        </ul>
-    </section>
+        </div>
+    
+        <!-- Paginação -->
+        <div class="catalogo-pagination">
+            <div class="catalogo-pagination-info">
+                <p>Página 1 de 4</p>
+            </div>
+            <div class="catalogo-pagination-controls">
+                <button class="catalogo-page-button" disabled>Anterior</button>
+                <button class="catalogo-page-button">Próximo</button>
+            </div>
+        </div>
+    </div>
 </div>
