@@ -227,11 +227,11 @@ body.local-catalogo #page-header {
 /* Botão de acesso */
 .catalogo-item-button {
   background-color: var(--primary-color-dark);
-  color: white;
+  color: white !important;
   padding: 10px 20px;
   border-radius: 4px;
   text-align: center;
-  text-decoration: none;
+  text-decoration: none !important;
   font-weight: bold;
 }
 
