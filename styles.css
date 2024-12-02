@@ -26,9 +26,16 @@ body.local-catalogo div[role="main"] {
   padding: 0 !important;
 }
 
+/* Esconde e limpa a barra de navegação secundária e o cabeçalho */
+body.local-catalogoo .secondary-navigation,
+body.local-catalogo #page-header {
+  display: none;
+}
+
 /* ------------------------------------------------------- ESTILOS DO CATÁLOGO DE EDITAIS ------------------------------------------------------- */
 
-/* Estilo geral para o heading */
+/* -------------------------------------- Heading ----------------------------------------------------------------------------*/
+
 #catalogo-heading-section {
   display: flex;
   align-items: center;
@@ -48,12 +55,14 @@ body.local-catalogo div[role="main"] {
   font-weight: bold;
 }
 
-/* Estilo do container de busca e filtro */
+/* -------------------------------------- Container para busca e filtro -----------------------------------------------------*/
+
 #catalogo-filter-container {
   display: flex;
   flex-direction: row;
   gap: 2rem;
   justify-content: space-evenly;
+  align-items: center;
   background-color: var(--background-light);
   border: 1px solid var(--border-color);
   padding: 15px;
@@ -63,7 +72,9 @@ body.local-catalogo div[role="main"] {
 }
 
 #catalogo-filter-container section {
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #catalogo-filter-container label {
@@ -83,7 +94,6 @@ body.local-catalogo div[role="main"] {
   color: var(--text-color-dark);
   background-color: var(--highlight-color);
   box-shadow: var(--box-shadow-light) inset;
-  margin-bottom: 10px;
 }
 
 #catalogo-filter-container button {
@@ -102,7 +112,37 @@ body.local-catalogo div[role="main"] {
   background-color: var(--button-hover-color);
 }
 
-/* Estilo do container da lista de editais */
+/* Estilo para o container do input e botão */
+.catalogo-input-button-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  gap: 10px; /* Espaço entre os campos */
+  margin: 0;
+}
+
+.catalogo-input-button-wrapper input,
+.catalogo-input-button-wrapper select,
+.catalogo-input-button-wrapper button {
+  height: 40px; /* Define uma altura fixa para todos os elementos */
+  padding: 0 10px; /* Ajusta o preenchimento interno */
+  box-sizing: border-box; /* Garante que padding e border sejam incluídos no cálculo da altura */
+  font-size: 1rem; /* Uniformiza o tamanho da fonte */
+  border-radius: 4px; /* Deixa todos os elementos com bordas arredondadas iguais */
+  border: 1px solid var(--border-color); /* Uniformiza as bordas */
+}
+
+.catalogo-input-button-wrapper input,
+.catalogo-input-button-wrapper select {
+  flex: 1; /* Faz com que o input ou select ocupe o máximo de espaço disponível */
+}
+
+.catalogo-input-button-wrapper button {
+  flex-shrink: 0; /* Impede que o botão encolha */
+}
+
+/* -------------------------------------- Container da lista de editais -----------------------------------------------------*/
+
 #catalogo-list-container {
   background-color: var(--background-light);
   border: 1px solid var(--border-color);
