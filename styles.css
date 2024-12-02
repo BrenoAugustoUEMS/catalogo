@@ -1,0 +1,137 @@
+:root {
+  --primary-color-dark: #333;
+  --primary-color-darker: #111;
+  --secondary-color: #444;
+  --background-light: #f1f1f1;
+  --border-color: #ddd;
+  --title-line: #33333333;
+  --text-color-dark: #555;
+  --text-color-muted: #666;
+  --highlight-color: #fff;
+  --button-hover-color: #222;
+  --box-shadow-light: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  --box-shadow-heavy: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ------------------------------------------------------- RESET DO TEMA ------------------------------------------------------- */
+
+/* Remove margens e paddings padrões do tema para a página do plugin */
+body.local-catalogo .main-inner {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.local-catalogo #page.drawers,
+body.local-catalogo div[role="main"] {
+  padding: 0 !important;
+}
+
+/* ------------------------------------------------------- ESTILOS DO CATÁLOGO DE EDITAIS ------------------------------------------------------- */
+
+/* Estilo geral para o heading */
+#catalogo-heading-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    to bottom,
+    var(--primary-color-dark),
+    var(--primary-color-darker)
+  );
+  padding: 40px 180px;
+  margin-bottom: 1em;
+  box-shadow: var(--box-shadow-heavy);
+}
+
+#catalogo-heading-section h1 {
+  color: var(--highlight-color) !important;
+  font-weight: bold;
+}
+
+/* Estilo do container de busca e filtro */
+#catalogo-filter-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: space-evenly;
+  background-color: var(--background-light);
+  border: 1px solid var(--border-color);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow-light);
+  margin-bottom: 20px;
+}
+
+#catalogo-filter-container section {
+  margin-bottom: 15px;
+}
+
+#catalogo-filter-container label {
+  display: block;
+  font-weight: bold;
+  color: var(--text-color-dark);
+  margin-bottom: 5px;
+}
+
+#catalogo-filter-container input,
+#catalogo-filter-container select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  color: var(--text-color-dark);
+  background-color: var(--highlight-color);
+  box-shadow: var(--box-shadow-light) inset;
+  margin-bottom: 10px;
+}
+
+#catalogo-filter-container button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--highlight-color);
+  background-color: var(--primary-color-dark);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#catalogo-filter-container button:hover {
+  background-color: var(--button-hover-color);
+}
+
+/* Estilo do container da lista de editais */
+#catalogo-list-container {
+  background-color: var(--background-light);
+  border: 1px solid var(--border-color);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow-light);
+}
+
+#catalogo-list-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#catalogo-list-container li {
+  padding: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+#catalogo-list-container li:last-child {
+  border-bottom: none;
+}
+
+#catalogo-list-container a {
+  color: var(--primary-color-dark);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#catalogo-list-container a:hover {
+  text-decoration: underline;
+}

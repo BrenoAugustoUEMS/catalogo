@@ -16,7 +16,9 @@ require_once(__DIR__ . '/renderer.php'); // Inclui o renderizador.
 $PAGE->set_url(new moodle_url('/local/catalogo/catalog.php'));
 $PAGE->set_context(context_system::instance());
 $PAGE->set_title('Catálogo de Cursos');
-$PAGE->set_heading('Catálogo de Cursos');
+$PAGE->set_pagelayout('base'); // Layout simples para a página.
+$PAGE->add_body_class('local-catalogo'); // Injeta Classe no body para isolar estilos nessa página
+$PAGE->requires->css('/local/catalogo/styles.css');
 
 // Buscar todos os cursos visíveis.
 global $DB;
