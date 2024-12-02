@@ -28,6 +28,6 @@ $data = $renderer->get_data(); // Pega os dados formatados.
 
 // Renderizar a página com o template.
 echo $OUTPUT->header();
-echo $OUTPUT->render_from_template('local_catalogo/catalog', $data);
+echo $OUTPUT->render_from_template('local_catalogo/catalogo', $data);
 echo $OUTPUT->footer();
 

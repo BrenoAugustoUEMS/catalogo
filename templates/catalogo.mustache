@@ -1,0 +1,51 @@
+{{!
+/**
+ * Template Mustache para o Catálogo de Cursos.
+ *
+ * Este arquivo é responsável por renderizar a interface do catálogo, exibindo
+ * uma lista de cursos ou uma mensagem caso nenhum curso esteja disponível.
+ *
+ * @package   local_catalogo
+ * @author    Breno Augusto
+ * @email     brenoaugusto@uems.br
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+}}
+
+<!-- Seção de busca -->
+<section id="catalogo-search-section">
+    <form action="" method="GET">
+        <label for="catalogo-search">Buscar editais:</label>
+        <input type="text" id="catalogo-search" name="search" placeholder="Digite palavras-chave">
+        <button type="submit">Buscar</button>
+    </form>
+</section>
+
+<!-- Seção de filtro por categorias -->
+<section id="catalogo-filter-section">
+    <form action="" method="GET">
+        <label for="catalogo-category">Filtrar por categoria:</label>
+        <select id="catalogo-category" name="category">
+            <option value="">Todas as categorias</option>
+            {{#categories}}
+            <option value="{{id}}">{{name}}</option>
+            {{/categories}}
+        </select>
+        <button type="submit">Filtrar</button>
+    </form>
+</section>
+
+<!-- Seção de lista de editais -->
+<section id="catalogo-list-section">
+    <ul>
+        {{#courses}}
+        <li>
+            <a href="{{url}}">{{fullname}}</a>
+        </li>
+        {{/courses}}
+
+        {{^courses}}
+        <p>Nenhum edital disponível no momento.</p>
+        {{/courses}}
+    </ul>
+</section>
