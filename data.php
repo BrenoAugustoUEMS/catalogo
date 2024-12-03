@@ -21,7 +21,7 @@ return [
     ],
     (object)[
         'id' => 4,
-        'fullname' => 'Edital PIBEX 2025',
+        'fullname' => 'PROCESSO SELETIVO PARA INGRESSO NO CURSO TÉCNICO EM ARTE CIRCENSE DA ESCOLA NACIONAL DE CIRCO LUIZ OLIMECHA (ENCLO) - TURMA 2025-2026 / BOLSA CULTURAL',
         'imageurl' => 'https://placecats.com/millie_neo/300/200',
         'organization' => 'PROEC',
         'tags' => ['Cultura', 'Extensão', 'Educação'],

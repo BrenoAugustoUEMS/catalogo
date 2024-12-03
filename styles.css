@@ -173,6 +173,7 @@ body.local-catalogo #page-header {
 .catalogo-list-item {
   display: flex;
   justify-content: space-between;
+  flex-wrap: nowrap;
   background-color: #fff;
   border: 1px solid var(--border-color);
   border-radius: 8px;
@@ -184,6 +185,13 @@ body.local-catalogo #page-header {
 .catalogo-item-content {
   display: flex;
   gap: 15px;
+  flex: 4;
+}
+
+.catalogo-item-extra {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .catalogo-item-image img {
