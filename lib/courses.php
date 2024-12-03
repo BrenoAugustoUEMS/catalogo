@@ -26,7 +26,10 @@ function local_catalogo_get_courses() {
             'fullname' => $course->fullname,
             'summary' => $course->summary,
             'category_id' => $course->category,
+            'url' => (new moodle_url('/course/view.php', ['id' => $course->id]))->out(false),
+            'intropage_url' => (new moodle_url('/local/intropage/index.php', ['courseid' => $course->id]))->out(false),
         ];
+
     }
 
     return $formatted_courses;

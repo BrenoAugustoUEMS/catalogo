@@ -15,8 +15,11 @@ function local_catalogo_get_data_for_template() {
     // Chama os cursos já com os detalhes.
     $courses = local_catalogo_get_courses_with_details();
 
+    $distinct_second_levels = local_catalogo_get_distinct_second_level_categories();
+
     // Retorna apenas os dados que serão usados no Mustache.
     return [
         'courses' => $courses,
+        'categories' => $distinct_second_levels,
     ];
 }

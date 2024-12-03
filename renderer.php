@@ -15,8 +15,10 @@ class local_catalogo_renderer extends plugin_renderer_base {
     public function render_course_catalog() {
         // Busca os dados processados para o template.
         $data = local_catalogo_get_data_for_template();
-        print_object($data);
-        die;
+        
+        // Testar %data
+        // print_object($data);
+        // die;
 
         // Renderiza o template.
         return $this->render_from_template('local_catalogo/catalogo', $data);

@@ -19,9 +19,9 @@ function local_catalogo_get_enrolment_data_for_course($course_id) {
     return [
         'enrolstart' => $enrolmethod && $enrolmethod->enrolstartdate
             ? userdate($enrolmethod->enrolstartdate, '%d/%m/%Y %H:%M')
-            : 'Sem data de início',
+            : 'Data não informada',
         'enrolend' => $enrolmethod && $enrolmethod->enrolenddate
             ? userdate($enrolmethod->enrolenddate, '%d/%m/%Y %H:%M')
-            : 'Sem data de término',
+            : 'Data não informada',
     ];
 }

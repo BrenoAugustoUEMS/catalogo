@@ -1,0 +1,36 @@
+<!-- Container principal da lista de cursos -->
+<div class="catalogo-container">
+    {{#courses}}
+    <div class="course-item">
+        <!-- Nome do curso -->
+        <h2 class="course-title">{{fullname}}</h2>
+
+        <!-- Categoria -->
+        <p class="course-category">{{category}}</p>
+
+        <!-- Resumo -->
+        <p class="course-summary">{{summary}}</p>
+
+        <!-- Link para a página padrão do curso no Moodle -->
+        <a href="{{url}}" class="course-link" target="_blank">Acesse o curso</a>
+        <!-- Link para a introdução do curso no plugin intropage -->
+        <a href="{{intropage_url}}" class="intropage-link" target="_blank">Ver introdução</a>
+
+        <!-- Datas de enrolamento -->
+        <div class="course-enrolment">
+            <p><strong>Início das inscrições:</strong> {{enrolment.enrolstart}}</p>
+            <p><strong>Término das inscrições:</strong> {{enrolment.enrolend}}</p>
+        </div>
+
+        <!-- Campos personalizados -->
+        <div class="course-custom-fields">
+            {{#custom_fields}}
+            <p><strong>Edital URL:</strong> {{edital_url}}</p>
+            <p><strong>ODS:</strong> {{ods}}</p>
+            <p><strong>Ações:</strong> {{actions}}</p>
+            <p><strong>Target:</strong> {{target}}</p>
+            {{/custom_fields}}
+        </div>
+    </div>
+    {{/courses}}
+</div>

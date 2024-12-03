@@ -8,6 +8,7 @@ $PAGE->set_context(context_system::instance());
 $PAGE->set_title('Catálogo de Cursos');
 $PAGE->set_pagelayout('base');
 $PAGE->requires->css('/local/catalogo/styles.css');
+$PAGE->add_body_class('local-catalogo'); // Injeta uma classe no <body>.
 
 // Obter os cursos usando a função do lib.php.
 $courses = local_catalogo_get_courses();
