@@ -13,7 +13,7 @@ require_once(__DIR__ . '/../../config.php');
 require_once(__DIR__ . '/renderer.php'); // Inclui o renderizador.
 
 // Configurar a página.
-$PAGE->set_url(new moodle_url('/local/catalogo/catalog.php'));
+$PAGE->set_url(new moodle_url('/local/catalogo/view.php'));
 $PAGE->set_context(context_system::instance());
 $PAGE->set_title('Catálogo de Cursos');
 $PAGE->set_pagelayout('base'); // Layout simples para a página.
