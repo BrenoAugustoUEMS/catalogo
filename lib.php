@@ -1,30 +1,31 @@
 <?php
 defined('MOODLE_INTERNAL') || die();
 
+require_once(__DIR__ . '/lib/categories.php');
+require_once(__DIR__ . '/lib/courses.php');
+require_once(__DIR__ . '/lib/custom_fields.php');
+require_once(__DIR__ . '/lib/enrolment.php');
+
 /**
- * Retorna uma lista básica de cursos visíveis no Moodle.
+ * Função para coletar todos os dados processados e formatados para o template.
  *
- * @return array Lista de cursos visíveis com o campo "fullname".
+ * @return array Dados organizados para o template.
  */
-function local_catalogo_get_courses() {
-    global $DB;
+function local_catalogo_get_data_for_template() {
+    // 1. Chama as funções para obter os dados processados
+    $categories = local_catalogo_get_categories();
+    $courses = local_catalogo_get_courses();
+    $custom_fields = local_catalogo_get_custom_fields();
+    $enrolment = local_catalogo_get_enrolment_data();
 
-    // Obter todos os cursos visíveis.
-    $courses = get_courses('all', 'c.fullname ASC', 'c.id, c.fullname, c.visible');
+    // 2. Organiza tudo em um único pacote de dados
+    $data = [
+        'categories' => $categories,
+        'courses' => $courses,
+        'custom_fields' => $custom_fields,
+        'enrolment' => $enrolment,
+    ];
 
-    // Filtrar apenas os cursos visíveis.
-    $visiblecourses = array_filter($courses, function($course) {
-        return $course->visible; // Inclui apenas cursos visíveis.
-    });
-
-    // Retornar os cursos em um formato simples.
-    $formattedcourses = [];
-    foreach ($visiblecourses as $course) {
-        $formattedcourses[] = [
-            'id' => $course->id,           // ID do curso.
-            'fullname' => $course->fullname // Nome completo do curso.
-        ];
-    }
-
-    return $formattedcourses;
+    // Retorna o pacote de dados
+    return $data;
 }

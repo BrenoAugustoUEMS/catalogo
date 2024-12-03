@@ -1,38 +1,24 @@
 <?php
-/**
- * Página principal do Catálogo de Cursos.
- *
- * Este arquivo é responsável por carregar e exibir os cursos disponíveis na plataforma.
- *
- * @package   local_catalogo
- * @author    Breno Augusto
- * @email     brenoaugusto@uems.br
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
 require_once(__DIR__ . '/../../config.php');
-require_once(__DIR__ . '/renderer.php'); // Inclui o renderizador.
+require_once(__DIR__ . '/lib.php');
 
 // Configurar a página.
 $PAGE->set_url(new moodle_url('/local/catalogo/view.php'));
 $PAGE->set_context(context_system::instance());
 $PAGE->set_title('Catálogo de Cursos');
-$PAGE->set_pagelayout('base'); // Layout simples para a página.
-$PAGE->add_body_class('local-catalogo'); // Injeta Classe no body para isolar estilos nessa página
+$PAGE->set_pagelayout('base');
 $PAGE->requires->css('/local/catalogo/styles.css');
 
-// Buscar todos os cursos visíveis.
-global $DB;
+// Obter os cursos usando a função do lib.php.
+$courses = local_catalogo_get_courses();
 
-// Aqui troca de onde vem os dados
-//$courses = $DB->get_records('course', ['visible' => 1], 'id ASC');
-$courses = include(__DIR__ . '/data.php');
+// Obter o renderer do plugin.
+$output = $PAGE->get_renderer('local_catalogo');
 
-// Processar os dados com o renderizador.
-$renderer = new local_catalogo_renderer($courses);
-$data = $renderer->get_data(); // Pega os dados formatados.
+// Passar os cursos ao renderer.
+$renderedhtml = $output->render_course_catalog();
 
-// Renderizar a página com o template.
+// Renderizar a página.
 echo $OUTPUT->header();
-echo $OUTPUT->render_from_template('local_catalogo/catalogo', $data);
+echo $renderedhtml;
 echo $OUTPUT->footer();
-

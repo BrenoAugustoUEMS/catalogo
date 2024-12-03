@@ -12,6 +12,43 @@
  */
 }}
 
+<!-- course_catalog.mustache -->
+<div class="course-catalog">
+    <h2>Cursos</h2>
+    
+    {{#courses}}
+        <div class="course">
+            <h3>{{fullname}}</h3>
+            <p>{{summary}}</p>
+            <p>Categoria: {{category_id}}</p>
+        </div>
+    {{/courses}}
+
+    <h2>Categorias</h2>
+    {{#categories}}
+        <div class="category">
+            <h3>{{name}}</h3>
+            <p>Caminho: {{path}}</p>
+        </div>
+    {{/categories}}
+
+    <!-- Campos personalizados -->
+    {{#custom_fields}}
+        <div class="custom-field">
+            <h3>{{name}}</h3>
+            <p>{{value}}</p>
+        </div>
+    {{/custom_fields}}
+
+    <!-- Dados de Enrolamento -->
+    {{#enrolment}}
+        <div class="enrolment">
+            <h3>{{course_name}}</h3>
+            <p>{{status}}</p>
+        </div>
+    {{/enrolment}}
+</div>
+
 <!-- Heading da página -->
 <section id="catalogo-heading-section">
     <a href="http://localhost/local/catalogo/view.php" class="text-decoration-none">
@@ -54,7 +91,7 @@
     <div id="catalogo-list-container">
     
         <!-- Quantidade de editais encontrados -->
-        <p class="catalogo-list-count">67 editais encontrados.</p>
+        <p class="catalogo-list-count">{{#courses}}{{count}}{{/courses}} editais encontrados.</p>
     
         <!-- Lista de editais -->
         <div class="catalogo-list-wrapper">
@@ -64,7 +101,7 @@
                 <div class="catalogo-item-content">
                     <!-- Imagem ou logotipo -->
                     <a href="{{url}}" class="catalogo-item-image">
-                        <img src="{{imageurl}}" alt="Logotipo do edital {{fullname}}">
+                        <img src="https://placecats.com/neo_2/300/200" alt="Logotipo do edital {{fullname}}">
                     </a>
     
                     <!-- Informações principais -->
@@ -74,7 +111,7 @@
                             <h5 class="catalogo-item-title m-0">{{fullname}}</h5>
                         </a>
                         <!-- Organização -->
-                        <p class="catalogo-item-organization m-0">{{organization}}</p>
+                        <p class="catalogo-item-organization m-0">{{category.name}}</p>
     
                         <!-- Áreas de Interesse -->
                         {{#interests}}
