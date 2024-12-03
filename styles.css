@@ -79,6 +79,7 @@ body.local-catalogo #page-header {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex: 1;
 }
 
 #catalogo-filter-container label {
@@ -275,5 +276,15 @@ body.local-catalogo #page-header {
 
   .catalogo-item-interests {
     display: none;
+  }
+
+  #catalogo-filter-container {
+    flex-direction: column;
+  }
+
+  #catalogo-search-section,
+  #catalogo-filter-section {
+    flex: 1;
+    width: 100%;
   }
 }

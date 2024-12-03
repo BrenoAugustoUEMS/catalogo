@@ -16,16 +16,20 @@ function local_catalogo_get_custom_fields_for_course($courseid) {
     foreach ($customfields_data as $data) {
         $shortname = $data->get_field()->get('shortname'); // Nome curto do campo.
         $value = $data->get_value(); // Valor do campo.
+        $hastarget = false;
 
         // Adiciona o campo ao array de custom_fields.
         $custom_fields[$shortname] = $value;
-    }
 
-    // Processa o campo 'target' para extrair tags separadas por vírgula.
-    if (!empty($custom_fields['target'])) {
-        $custom_fields['target_tags'] = array_map('trim', explode(',', $custom_fields['target']));
-    } else {
-        $custom_fields['target_tags'] = []; // Caso não haja valores no campo.
+        // Processa o campo 'target' para extrair tags separadas por vírgula.
+        if (!empty($custom_fields['target'])) {
+            $custom_fields['target_tags'] = array_map('trim', explode(',', $custom_fields['target']));
+            $hastarget = true;
+        } else {
+            $custom_fields['target_tags'] = []; // Caso não haja valores no campo.
+        }
+
+        $custom_fields['hastarget'] = $hastarget;
     }
 
     return $custom_fields;
