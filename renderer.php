@@ -2,6 +2,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+require_once(__DIR__ . '/lib.php');
+
 /**
  * Renderer personalizado para o plugin Catálogo.
  */

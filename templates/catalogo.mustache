@@ -35,16 +35,18 @@
     
         <!-- Seção de filtro por categorias -->
         <section id="catalogo-filter-section">
-            <label for="catalogo-category">Filtrar por categoria:</label>
-            <div class="catalogo-input-button-wrapper">
-                <select id="catalogo-category" name="category">
-                    <option value="">Todas as categorias</option>
-                    {{#categories}}
-                        <option value="{{.}}">{{.}}</option>
-                    {{/categories}}
-                </select>
-                <button type="submit">Filtrar</button>
-            </div>
+            <form method="get" action="{{baseurl}}">
+                <label for="catalogo-category">Filtrar por categoria:</label>
+                <div class="catalogo-input-button-wrapper">
+                    <select id="catalogo-category" name="category">
+                        <option value="">Todas as categorias</option>
+                        {{#categories}}
+                            <option value="{{.}}">{{.}}</option>
+                        {{/categories}}
+                    </select>
+                    <button type="submit">Filtrar</button>
+                </div>
+            </form>
         </section>
     </div>
     
