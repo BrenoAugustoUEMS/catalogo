@@ -5,12 +5,14 @@
  *
  * @return array Dados dos campos personalizados.
  */
-function local_catalogo_get_custom_fields() {
-    global $DB;
+function local_catalogo_get_custom_fields_for_course($course_id) {
+    $handler = \core_customfield\handler::get_handler('core_course', 'course');
+    $data = $handler->get_instance_data($course_id, true);
 
-    // Exemplo de como buscar campos personalizados
-    $custom_fields = []; // Suponha que você tenha campos customizados a serem buscados
-    // Exemplo de busca: $custom_fields = $DB->get_records('course_custom_fields', ...);
+    $fields = [];
+    foreach ($data as $field_data) {
+        $fields[$field_data->get_field()->get('shortname')] = $field_data->get_value();
+    }
 
-    return $custom_fields;
+    return $fields;
 }

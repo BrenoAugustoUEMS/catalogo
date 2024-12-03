@@ -43,8 +43,8 @@
     <!-- Dados de Enrolamento -->
     {{#enrolment}}
         <div class="enrolment">
-            <h3>{{course_name}}</h3>
-            <p>{{status}}</p>
+            <h3>{{enrolstart}}</h3>
+            <p>{{enrolend}}</p>
         </div>
     {{/enrolment}}
 </div>
@@ -132,7 +132,7 @@
                     <!-- Prazo de inscrição -->
                     <div class="catalogo-item-dates">
                         <p class="catalogo-deadline">
-                            Inscrições até: <strong>{{deadline}}</strong>
+                            Inscrições até: <strong>{{enrolend}}</strong>
                         </p>
                     </div>
     

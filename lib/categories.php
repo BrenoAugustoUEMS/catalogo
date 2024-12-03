@@ -5,20 +5,27 @@
  *
  * @return array Dados das categorias formatados.
  */
-function local_catalogo_get_categories() {
+function local_catalogo_get_category($category_id) {
     global $DB;
 
-    // Busca as categorias visíveis
-    $categories = $DB->get_records('course_categories', ['visible' => 1], 'name ASC', 'id, name, path');
+    // Busca o nome e o path da categoria.
+    $category = $DB->get_record('course_categories', ['id' => $category_id], 'id, name, path', IGNORE_MISSING);
 
-    $formatted_categories = [];
-    foreach ($categories as $category) {
-        $formatted_categories[] = [
-            'id' => $category->id,
-            'name' => $category->name,
-            'path' => $category->path,  // Caminho da categoria
-        ];
+    if ($category) {
+        $pathids = explode('/', trim($category->path, '/'));
+
+        // Busca os nomes das categorias no caminho.
+        $categories = [];
+        foreach ($pathids as $catid) {
+            $cat = $DB->get_record('course_categories', ['id' => $catid], 'name', IGNORE_MISSING);
+            if ($cat) {
+                $categories[] = $cat->name;
+            }
+        }
+
+        return implode(' > ', $categories);
     }
 
-    return $formatted_categories;
+    return 'Categoria não encontrada';
 }
+

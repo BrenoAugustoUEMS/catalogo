@@ -12,20 +12,11 @@ require_once(__DIR__ . '/lib/enrolment.php');
  * @return array Dados organizados para o template.
  */
 function local_catalogo_get_data_for_template() {
-    // 1. Chama as funções para obter os dados processados
-    $categories = local_catalogo_get_categories();
-    $courses = local_catalogo_get_courses();
-    $custom_fields = local_catalogo_get_custom_fields();
-    $enrolment = local_catalogo_get_enrolment_data();
+    // Chama os cursos já com os detalhes.
+    $courses = local_catalogo_get_courses_with_details();
 
-    // 2. Organiza tudo em um único pacote de dados
-    $data = [
-        'categories' => $categories,
+    // Retorna apenas os dados que serão usados no Mustache.
+    return [
         'courses' => $courses,
-        'custom_fields' => $custom_fields,
-        'enrolment' => $enrolment,
     ];
-
-    // Retorna o pacote de dados
-    return $data;
 }

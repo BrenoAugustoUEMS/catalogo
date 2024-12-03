@@ -1,18 +1,27 @@
 <?php
 
-// enrolment.php
+defined('MOODLE_INTERNAL') || die();
 
 /**
- * Busca e formata os dados de enrolamento dos cursos.
+ * Busca os dados de autoinscrição (enrolment) para todos os cursos.
  *
- * @return array Dados do enrolamento.
+ * @return array Dados de enrolamento organizados por ID do curso.
  */
-function local_catalogo_get_enrolment_data() {
+function local_catalogo_get_enrolment_data_for_course($course_id) {
     global $DB;
 
-    // Exemplo de como buscar dados de enrolamento
-    $enrolment_data = []; // Suponha que você tenha dados de enrolamento a serem buscados
-    // Exemplo de busca: $enrolment_data = $DB->get_records('enrol', ...);
+    // Busca o método de autoinscrição.
+    $enrolmethod = $DB->get_record('enrol', [
+        'courseid' => $course_id,
+        'enrol' => 'self'
+    ], 'enrolstartdate, enrolenddate', IGNORE_MISSING);
 
-    return $enrolment_data;
+    return [
+        'enrolstart' => $enrolmethod && $enrolmethod->enrolstartdate
+            ? userdate($enrolmethod->enrolstartdate, '%d/%m/%Y %H:%M')
+            : 'Sem data de início',
+        'enrolend' => $enrolmethod && $enrolmethod->enrolenddate
+            ? userdate($enrolmethod->enrolenddate, '%d/%m/%Y %H:%M')
+            : 'Sem data de término',
+    ];
 }

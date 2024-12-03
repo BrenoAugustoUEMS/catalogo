@@ -2,18 +2,23 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+/**
+ * Renderer personalizado para o plugin Catálogo.
+ */
 class local_catalogo_renderer extends plugin_renderer_base {
 
     /**
-     * Função para renderizar o catálogo de cursos.
+     * Renderiza a lista de cursos com os dados do template.
      *
-     * @return string HTML gerado pelo template.
+     * @return string HTML do catálogo.
      */
     public function render_course_catalog() {
-        // Chama a função que coleta todos os dados processados do lib.php
+        // Busca os dados processados para o template.
         $data = local_catalogo_get_data_for_template();
+        print_object($data);
+        die;
 
-        // Passa os dados para o template renderizar
+        // Renderiza o template.
         return $this->render_from_template('local_catalogo/catalogo', $data);
     }
 }
