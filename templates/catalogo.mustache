@@ -59,11 +59,11 @@
         <div class="catalogo-list-wrapper">
             <!-- Item de edital -->
             {{#courses}}
-            <div class="catalogo-list-item">
+            <div class="catalogo-list-item d-flex flex-md-row flex-column">
                 <div class="catalogo-item-content">
                     <!-- Imagem ou logotipo -->
                     <a href="{{intropage_url}}" target="_blank" class="catalogo-item-image">
-                        <img src="https://placecats.com/neo_2/300/200" alt="Logotipo do edital {{fullname}}">
+                        <img src="https://picsum.photos/id/1{{id}}/200" alt="Logotipo do edital {{fullname}}">
                     </a>
     
                     <!-- Informações principais -->
@@ -76,16 +76,16 @@
                         <p class="catalogo-item-organization m-0">{{category.path}}</p>
     
                         <!-- Público-Alvo -->
-                        {{#custom_fields.target}}
+                        
                         <div class="catalogo-item-interests mt-auto">
                             <p class="text-muted small m-0">Público-Alvo:</p>
                             <div class="catalogo-interest-tags">
-                                
-                                <span class="catalogo-tag">{{custom_fields.target}}</span>
-                                
+                                {{#custom_fields.target_tags}}
+                                <span class="catalogo-tag">{{.}}</span>
+                                {{/custom_fields.target_tags}}
                             </div>
                         </div>
-                        {{/custom_fields.target}}
+                       
                     </div>
                 </div>
     

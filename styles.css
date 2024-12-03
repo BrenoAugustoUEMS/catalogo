@@ -269,3 +269,11 @@ body.local-catalogo #page-header {
   background-color: var(--secondary-color);
   cursor: not-allowed;
 }
+
+@media (max-width: 767.98px) {
+  /* Estilos para dispositivos pequenos */
+
+  .catalogo-item-interests {
+    display: none;
+  }
+}
