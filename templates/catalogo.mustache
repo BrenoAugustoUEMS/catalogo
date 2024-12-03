@@ -68,18 +68,18 @@
                     </a>
     
                     <!-- Informações principais -->
-                    <div class="catalogo-item-info">
+                    <div class="catalogo-item-info d-flex">
                         <!-- Título do edital -->
                         <a href="{{url}}">
-                            <h5 class="catalogo-item-title">{{fullname}}</h5>
+                            <h5 class="catalogo-item-title m-0">{{fullname}}</h5>
                         </a>
                         <!-- Organização -->
-                        <p class="catalogo-item-organization">{{organization}}</p>
+                        <p class="catalogo-item-organization m-0">{{organization}}</p>
     
                         <!-- Áreas de Interesse -->
                         {{#interests}}
-                        <div class="catalogo-item-interests">
-                            <p>Áreas de Interesse:</p>
+                        <div class="catalogo-item-interests mt-auto">
+                            <p class="text-muted small m-0">Áreas de Interesse:</p>
                             <div class="catalogo-interest-tags">
                                 {{#tags}}
                                 <span class="catalogo-tag">{{.}}</span>
