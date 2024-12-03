@@ -214,9 +214,36 @@ body.local-catalogo #page-header {
   font-weight: bold;
 }
 
-.catalogo-item-organization {
+.catalogo-item-category {
+  font-size: 0.8rem;
+  color: var(--text-color-muted);
+}
+
+.catalogo-item-summary {
   font-size: 0.9rem;
   color: var(--text-color-muted);
+  min-height: 40px;
+  max-height: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  /* Efeito de gradiente ajustado */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 70%,
+    /* Parte visível */ rgba(0, 0, 0, 0.8) 98%,
+    /* Meio termo */ rgba(0, 0, 0, 0) 100% /* Totalmente transparente */
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 70%,
+    rgba(0, 0, 0, 0.5) 90%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-size: 100%;
+  mask-size: 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
 
 .catalogo-item-interests {

@@ -63,17 +63,20 @@
                 <div class="catalogo-item-content">
                     <!-- Imagem ou logotipo -->
                     <a href="{{intropage_url}}" target="_blank" class="catalogo-item-image">
-                        <img src="https://picsum.photos/id/1{{id}}/200" alt="Logotipo do edital {{fullname}}">
+                        <img src="https://picsum.photos/200?random={{id}}" alt="Logotipo do edital {{fullname}}">
                     </a>
     
                     <!-- Informações principais -->
                     <div class="catalogo-item-info d-flex">
+                        <!-- Organização -->
+                        <p class="catalogo-item-category m-0">{{category.path}}</p>
                         <!-- Título do edital -->
                         <a href="{{intropage_url}}" target="_blank">
                             <h5 class="catalogo-item-title m-0">{{fullname}}</h5>
                         </a>
-                        <!-- Organização -->
-                        <p class="catalogo-item-organization m-0">{{category.path}}</p>
+                        
+                        <!-- Descrição do Edital -->
+                        <p class="catalogo-item-summary">{{summary}}</p>
     
                         <!-- Público-Alvo -->
                         
