@@ -18,7 +18,6 @@ return [
         'tags' => ['Esportes', 'Educação'],
         'deadline' => '05/12/2024',
         'extended' => true,
-        'extended_deadline' => '10/12/2024',
     ],
     (object)[
         'id' => 3,

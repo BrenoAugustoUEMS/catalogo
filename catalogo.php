@@ -22,6 +22,8 @@ $PAGE->requires->css('/local/catalogo/styles.css');
 
 // Buscar todos os cursos visíveis.
 global $DB;
+
+// Aqui troca de onde vem os dados
 //$courses = $DB->get_records('course', ['visible' => 1], 'id ASC');
 $courses = include(__DIR__ . '/data.php');
 

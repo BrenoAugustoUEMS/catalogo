@@ -187,8 +187,8 @@ body.local-catalogo #page-header {
 }
 
 .catalogo-item-image img {
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
   border-radius: 8px;
 }

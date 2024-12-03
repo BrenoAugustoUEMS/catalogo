@@ -61,7 +61,6 @@ class local_catalogo_renderer {
                 'tags' => isset($course->tags) ? $course->tags : [], // Lista de tags
                 'deadline' => isset($course->deadline) ? $course->deadline : '', // Prazo final
                 'extended' => isset($course->extended) ? $course->extended : false, // Indica se foi prorrogado
-                'extended_deadline' => isset($course->extended_deadline) ? $course->extended_deadline : '', // Prazo prorrogado
             ];
         }
         return ['courses' => $formattedcourses];
