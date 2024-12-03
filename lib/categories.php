@@ -42,10 +42,6 @@ function local_catalogo_get_category($category_id) {
     ];
 }
 
-
-
-
-
 /**
  * Busca todos os segundos níveis de categorias distintas.
  *
@@ -74,3 +70,29 @@ function local_catalogo_get_distinct_second_level_categories() {
 }
 
 
+/**
+ * Busca todas as categorias visíveis e retorna seus IDs e nomes do segundo nível.
+ *
+ * @return array Lista de categorias no formato [id => name_level].
+ */
+function local_catalogo_get_categories_for_filter() {
+    global $DB;
+
+    // Busca todas as categorias visíveis.
+    $categories = $DB->get_records('course_categories', ['visible' => 1], 'id ASC', 'id, name, path');
+
+    $formatted_categories = [];
+
+    foreach ($categories as $category) {
+        // Usa a função local_catalogo_get_category para obter o path e o segundo nível.
+        $category_data = local_catalogo_get_category($category->id);
+
+        // Adiciona ao array formatado.
+        $formatted_categories[] = [
+            'id' => $category->id, // ID da categoria.
+            'name' => $category_data['name_level'], // Nome do segundo nível da categoria.
+        ];
+    }
+
+    return $formatted_categories;
+}

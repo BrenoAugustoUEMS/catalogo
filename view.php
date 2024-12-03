@@ -10,16 +10,16 @@ $PAGE->set_pagelayout('base');
 $PAGE->requires->css('/local/catalogo/styles.css');
 $PAGE->add_body_class('local-catalogo'); // Injeta uma classe no <body>.
 
-// Obter os cursos usando a função do lib.php.
-$courses = local_catalogo_get_courses();
+// Captura o filtro enviado pela URL.
+$categoryfilter = optional_param('category', '', PARAM_INT);
 
-// Obter o renderer do plugin.
+// Busca os cursos com base no filtro.
+$courses = local_catalogo_get_courses($categoryfilter);
+
+// Obtém o renderer.
 $output = $PAGE->get_renderer('local_catalogo');
 
-// Passar os cursos ao renderer.
-$renderedhtml = $output->render_course_catalog();
-
-// Renderizar a página.
+// Renderiza a página.
 echo $OUTPUT->header();
-echo $renderedhtml;
+echo $output->render_course_catalog($data); // Passa $data diretamente para o renderer.
 echo $OUTPUT->footer();

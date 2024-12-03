@@ -32,39 +32,21 @@ function local_catalogo_get_courses_with_details() {
 
 
 /**
- * Função para coletar todos os dados processados e formatados para o template.
+ * Coleta todos os dados processados e formatados para o template.
  *
+ * @param int|null $categoryfilter ID da categoria a ser filtrada (opcional).
  * @return array Dados organizados para o template.
  */
 function local_catalogo_get_data_for_template($categoryfilter = null) {
-    // Chama os cursos já com os detalhes.
-    $courses = local_catalogo_get_courses_with_details();
+    // Busca os cursos filtrados (se houver filtro).
+    $courses = local_catalogo_get_courses($categoryfilter);
 
-    // Filtra os cursos, se um filtro de categoria for fornecido.
-    if ($categoryfilter) {
-        $courses = local_catalogo_filter_courses_by_category($courses, $categoryfilter);
-    }
+    // Busca as categorias distintas do segundo nível para o filtro.
+    $distinct_second_levels = local_catalogo_get_distinct_second_level_categories();
 
-
-    $category_filter_options = local_catalogo_get_distinct_second_level_categories();
-
-    // Retorna apenas os dados que serão usados no Mustache.
+    // Retorna os dados no formato esperado pelo template.
     return [
         'courses' => $courses,
-        'categories' => $category_filter_options,
+        'categories' => $distinct_second_levels,
     ];
-}
-
-/**
- * Filtra os cursos com base em uma categoria fornecida.
- *
- * @param array $courses Lista de cursos completos.
- * @param string $categoryfilter Nome da categoria a ser filtrada.
- * @return array Cursos que pertencem à categoria filtrada.
- */
-function local_catalogo_filter_courses_by_category(array $courses, string $categoryfilter) {
-    return array_filter($courses, function($course) use ($categoryfilter) {
-        // Verifica se o nome da categoria no path contém o filtro.
-        return strpos($course['category']['path'], $categoryfilter) !== false;
-    });
 }
