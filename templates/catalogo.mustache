@@ -40,8 +40,8 @@
                 <div class="catalogo-input-button-wrapper">
                     <select id="catalogo-category" name="category">
                         <option value="">Todas as categorias</option>
-                        {{#categories}}
-                            <option value="{{.}}">{{.}}</option>
+                        {{#categories}} 
+                            <option value="{{id}}">{{name}}</option>
                         {{/categories}}
                     </select>
                     <button type="submit">Filtrar</button>

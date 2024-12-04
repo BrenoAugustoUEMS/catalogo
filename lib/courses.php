@@ -8,26 +8,32 @@ defined('MOODLE_INTERNAL') || die();
  * @param int|null $categoryfilter ID da categoria para filtrar (opcional).
  * @return array Dados dos cursos formatados.
  */
-function local_catalogo_get_courses($categoryfilter = null) {
+function local_catalogo_get_courses($categoryfilter = null) : array {
     global $DB;
 
-    // Monta a condição de filtro de categoria, se necessário.
+    // Condição para o filtro de categoria.
     $categorycondition = '';
-    $params = [];
-
     if (!empty($categoryfilter)) {
-        $categorycondition = "AND category = :categoryfilter";
-        $params['categoryfilter'] = $categoryfilter;
+        $categorycondition = "AND category = :categoryid";
     }
 
-    // Busca os cursos visíveis (ignora o curso com ID=1) e aplica o filtro de categoria.
-    $courses = $DB->get_records_sql(
-        "SELECT id, fullname, summary, category
-         FROM {course}
-         WHERE visible = 1 AND id != 1 $categorycondition
-         ORDER BY id ASC",
-        $params
-    );
+    // Consulta para buscar cursos visíveis.
+    $sql = "
+        SELECT id, fullname, summary, category
+        FROM {course}
+        WHERE visible = 1 AND id != 1
+        $categorycondition
+        ORDER BY fullname ASC
+    ";
+
+    // Parâmetros para a consulta.
+    $params = [];
+    if (!empty($categoryfilter)) {
+        $params['categoryid'] = $categoryfilter;
+    }
+
+    // Executa a consulta.
+    $courses = $DB->get_records_sql($sql, $params);
 
     // Formata os cursos.
     $formatted_courses = [];

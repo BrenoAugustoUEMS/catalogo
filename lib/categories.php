@@ -7,7 +7,7 @@
  * @param int $category_id O ID da categoria.
  * @return array Um array com o caminho completo e o nome da categoria por nível.
  */
-function local_catalogo_get_category($category_id) {
+function local_catalogo_get_category($category_id) : array {
     global $DB;
 
     // Busca a categoria usando o ID
@@ -43,30 +43,41 @@ function local_catalogo_get_category($category_id) {
 }
 
 /**
- * Busca todos os segundos níveis de categorias distintas.
+ * Retorna uma lista das categorias de segundo nível (ou todas as categorias visíveis se não houver segundo nível).
  *
- * @return array Lista dos nomes do segundo nível de categorias.
+ * @return array Lista de categorias formatadas.
  */
-function local_catalogo_get_distinct_second_level_categories() {
+function local_catalogo_get_distinct_second_level_categories() : array {
     global $DB;
 
-    // Busca todas as categorias visíveis
-    $categories = $DB->get_records('course_categories', ['visible' => 1], 'name ASC', 'id, name, path');
+    // Busca todas as categorias visíveis.
+    $categories = $DB->get_records('course_categories', ['visible' => 1], 'id, name, path');
 
-    $second_level_categories = [];
+    // Formata as categorias para incluir o nome de segundo nível.
+    $formatted_categories = [];
 
     foreach ($categories as $category) {
-        // Pega os dados da categoria (caminho completo e nome do segundo nível)
-        $category_info = local_catalogo_get_category($category->id);
+        // Explode o caminho da categoria.
+        $pathids = explode('/', trim($category->path, '/'));
 
-        // Verifica se o nome do segundo nível já está no array
-        if (!in_array($category_info['name_level'], $second_level_categories)) {
-            // Se não estiver, adiciona
-            $second_level_categories[] = $category_info['name_level'];
+        // Verifica se há pelo menos 2 níveis no caminho.
+        if (count($pathids) > 1) {
+            $second_level_id = $pathids[1]; // Segundo nível.
+
+            // Busca o nome do segundo nível.
+            $second_level_category = $DB->get_record('course_categories', ['id' => $second_level_id], 'id, name');
+            if ($second_level_category) {
+                // Adiciona o segundo nível ao array formatado, garantindo unicidade.
+                $formatted_categories[$second_level_id] = [
+                    'id' => $second_level_category->id,
+                    'name' => $second_level_category->name,
+                ];
+            }
         }
     }
 
-    return $second_level_categories;
+    // Retorna as categorias formatadas.
+    return array_values($formatted_categories); // Remove as chaves para que o Mustache as processe corretamente.
 }
 
 
@@ -75,7 +86,7 @@ function local_catalogo_get_distinct_second_level_categories() {
  *
  * @return array Lista de categorias no formato [id => name_level].
  */
-function local_catalogo_get_categories_for_filter() {
+function local_catalogo_get_categories_for_filter() : array {
     global $DB;
 
     // Busca todas as categorias visíveis.

@@ -1,4 +1,5 @@
 <?php
+
 require_once(__DIR__ . '/../../config.php');
 require_once(__DIR__ . '/lib.php');
 
@@ -7,19 +8,24 @@ $PAGE->set_url(new moodle_url('/local/catalogo/view.php'));
 $PAGE->set_context(context_system::instance());
 $PAGE->set_title('Catálogo de Cursos');
 $PAGE->set_pagelayout('base');
+$PAGE->add_body_class('local-catalogo');
 $PAGE->requires->css('/local/catalogo/styles.css');
-$PAGE->add_body_class('local-catalogo'); // Injeta uma classe no <body>.
 
 // Captura o filtro enviado pela URL.
 $categoryfilter = optional_param('category', '', PARAM_INT);
 
-// Busca os cursos com base no filtro.
-$courses = local_catalogo_get_courses($categoryfilter);
+// Gera os dados para o template.
+$data = local_catalogo_get_data_for_template($categoryfilter);
 
-// Obtém o renderer.
+// Adiciona verificação de segurança para garantir que $data esteja definido.
+if (empty($data)) {
+    $data = ['courses' => [], 'categories' => []]; // Inicializa com valores vazios
+}
+
+// Obtém o renderer personalizado do plugin.
 $output = $PAGE->get_renderer('local_catalogo');
 
-// Renderiza a página.
+// Renderiza a página com os dados.
 echo $OUTPUT->header();
-echo $output->render_course_catalog($data); // Passa $data diretamente para o renderer.
+echo $output->render_course_catalog($data);
 echo $OUTPUT->footer();
