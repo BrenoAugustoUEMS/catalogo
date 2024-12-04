@@ -11,8 +11,9 @@ $PAGE->set_pagelayout('base');
 $PAGE->add_body_class('local-catalogo');
 $PAGE->requires->css('/local/catalogo/styles.css');
 
-// Captura o filtro enviado pela URL.
-$categoryfilter = optional_param('category', '', PARAM_INT);
+// Captura o filtro enviado pela URL e garante que seja um inteiro ou null.
+$categoryfilter = optional_param('category', 0, PARAM_INT);
+$categoryfilter = ($categoryfilter > 0) ? $categoryfilter : null;
 
 // Gera os dados para o template.
 $data = local_catalogo_get_data_for_template($categoryfilter);

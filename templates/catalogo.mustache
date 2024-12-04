@@ -41,7 +41,7 @@
                     <select id="catalogo-category" name="category">
                         <option value="">Todas as categorias</option>
                         {{#categories}} 
-                            <option value="{{id}}">{{name}}</option>
+                            <option value="{{id}}" {{#is_selected}}selected{{/is_selected}}>{{name}}</option>
                         {{/categories}}
                     </select>
                     <button type="submit">Filtrar</button>
