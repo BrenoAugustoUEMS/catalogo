@@ -76,7 +76,7 @@ function local_catalogo_get_second_level_categories(?string $path = null, ?int $
                 return [
                     'id' => $second_level_category->id,
                     'name' => $second_level_category->name,
-                    'is_selected' => ($second_level_category->id === $categoryfilter), // Verifica se está selecionada
+                    'is_selected' => ((int) $second_level_category->id === (int) $categoryfilter), // Corrigido
                 ];
             }
         }
@@ -107,7 +107,7 @@ function local_catalogo_get_second_level_categories(?string $path = null, ?int $
                     $formatted_categories[$second_level_id] = [
                         'id' => $second_level_category->id,
                         'name' => $second_level_category->name,
-                        'is_selected' => ($second_level_category->id === $categoryfilter),
+                        'is_selected' => ((int) $second_level_category->id === (int) $categoryfilter), // Corrigido
                     ];
                 }
             }

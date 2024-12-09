@@ -18,11 +18,6 @@ $categoryfilter = ($categoryfilter > 0) ? $categoryfilter : null;
 // Gera os dados para o template.
 $data = local_catalogo_get_data_for_template($categoryfilter);
 
-// Adiciona verificação de segurança para garantir que $data esteja definido.
-if (empty($data)) {
-    $data = ['courses' => [], 'categories' => []]; // Inicializa com valores vazios
-}
-
 // Obtém o renderer personalizado do plugin.
 $output = $PAGE->get_renderer('local_catalogo');
 

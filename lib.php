@@ -17,12 +17,22 @@ function local_catalogo_get_data_for_template($categoryfilter) : array {
     // Busca cursos com ou sem filtro de categoria.
     $courses = local_catalogo_get_courses_with_details($categoryfilter);
     // Busca as categorias para o menu suspenso.
-    $categories = local_catalogo_get_second_level_categories($categoryfilter);
+    $categories = local_catalogo_get_second_level_categories();
+
+    // Identifica a categoria ativa (caso exista).
+    $active_category = null;
+    foreach ($categories as $category) {
+        if (!empty($category['is_selected']) && $category['is_selected'] === true) {
+            $active_category = $category['name']; // Nome da categoria ativa.
+            break;
+        }
+    }
 
     return [
         'courses' => $courses,
         'categories' => $categories,
-        'selected_category' => $categoryfilter, // ID da categoria ativa
+        'active_category' => $active_category,
+        'baseurl' => (new moodle_url('/local/catalogo/view.php'))->out(),
     ];
 }
 
