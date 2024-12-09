@@ -14,11 +14,15 @@ require_once(__DIR__ . '/lib/enrolment.php');
  */
 function local_catalogo_get_data_for_template($categoryfilter) : array {
     
+    if ($categoryfilter === null) {
+        
+    }
     // Busca cursos com ou sem filtro de categoria.
     $courses = local_catalogo_get_courses_with_details($categoryfilter);
-    // Busca as categorias para o menu suspenso.
-    $categories = local_catalogo_get_second_level_categories();
 
+    $category_processed = local_catalogo_process_category($categoryfilter);
+    // Busca as categorias para o menu suspenso
+    $categories = local_catalogo_get_second_level_categories($category_processed['path'],$categoryfilter);
     // Identifica a categoria ativa (caso exista).
     $active_category = null;
     foreach ($categories as $category) {

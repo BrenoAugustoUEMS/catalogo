@@ -6,16 +6,19 @@
  * @param int $category_id O ID da categoria.
  * @return array Um array com o caminho completo e o nome do segundo nível.
  */
-function local_catalogo_process_category(int $category_id) : array {
+function local_catalogo_process_category(?int $category_id = null) : array {
     global $DB;
+
 
     // Busca a categoria usando o ID
     $category = $DB->get_record('course_categories', ['id' => $category_id], 'id, name, path', IGNORE_MISSING);
-    $pathids = explode('/', trim($category->path, '/'));
+    $pathids = null;
+
 
     if ($category) {
         // Inicializa o array de nomes por nível
         $category_name_by_level = [];
+        $pathids = explode('/', trim($category->path, '/'));
 
         // Popula o array de nomes por nível com as categorias ao longo do caminho
         foreach ($pathids as $catid) {
@@ -26,7 +29,8 @@ function local_catalogo_process_category(int $category_id) : array {
         }
 
         return [
-            'path' => implode(' > ', $category_name_by_level),  // Caminho completo
+            'path_level' => implode(' > ', $category_name_by_level),  // Caminho completo
+            'path' => $category->path,
             'pathids' => $pathids,
             'name_level' => (count($category_name_by_level) > 1) ? $category_name_by_level[1] : $category_name_by_level[0],  // Nome do segundo nível, ou o nome original
         ];
@@ -34,7 +38,8 @@ function local_catalogo_process_category(int $category_id) : array {
 
     // Caso a categoria não seja encontrada
     return [
-        'path' => 'Caminho não encontrado',
+        'path_level' => 'Caminho não encontrado',
+        'path' => 'Caminho da Categoria não encontrada',
         'pathids' => $pathids,
         'name_level' => 'Categoria não encontrada',
     ];
@@ -103,6 +108,7 @@ function local_catalogo_get_second_level_categories(?string $path = null, ?int $
             // Garante que cada segundo nível apareça apenas uma vez no array.
             if (!isset($formatted_categories[$second_level_id])) {
                 $second_level_category = $DB->get_record('course_categories', ['id' => $second_level_id], 'id, name');
+
                 if ($second_level_category) {
                     $formatted_categories[$second_level_id] = [
                         'id' => $second_level_category->id,
@@ -113,7 +119,7 @@ function local_catalogo_get_second_level_categories(?string $path = null, ?int $
             }
         }
     }
-
+    var_dump($formatted_categories);
     // Retorna as categorias formatadas como array numérico.
     return array_values($formatted_categories);
 }
