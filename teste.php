@@ -21,24 +21,59 @@ $data = local_catalogo_get_data_for_template($categoryfilter);
 // Exibe o cabeçalho padrão do Moodle.
 echo $OUTPUT->header();
 
-// Exibe os dados processados para fins de depuração.
-echo html_writer::tag('h2', 'Depuração dos Dados Processados');
+// Container principal
+echo '<div class="container mt-4">';
 
-// Se quiser um visual mais limpo e organizado para os dados, utilize uma estrutura de visualização.
-echo html_writer::tag('h3', 'Filtro de Categoria Ativo:');
-echo html_writer::tag('p', ($categoryfilter !== null) ? "ID da Categoria: {$categoryfilter}" : "Nenhuma categoria ativa (sem filtro)");
+// Título da página.
+echo '<div class="text-center mb-4">';
+echo '<h1 class="text-primary">Depuração do Catálogo de Cursos</h1>';
+echo '<p class="text-muted">Visualize os dados processados para análise e testes.</p>';
+echo '</div>';
 
-// Exibe as categorias processadas.
-echo html_writer::tag('h3', 'Categorias:');
-echo html_writer::start_tag('pre'); // Caixa para formatar a saída.
-print_object($data['categories']);
-echo html_writer::end_tag('pre');
+// Seção: Filtro de Categoria Ativo
+echo '<div class="card mb-4">';
+echo '<div class="card-header bg-primary text-white">';
+echo '<h4>Filtro de Categoria Ativo</h4>';
+echo '</div>';
+echo '<div class="card-body">';
+if ($categoryfilter !== null) {
+    echo '<p class="text-success">ID da Categoria: <strong>' . $categoryfilter . '</strong></p>';
+} else {
+    echo '<p class="text-danger">Nenhuma categoria ativa (sem filtro).</p>';
+}
+echo '</div>';
+echo '</div>';
 
-// Exibe os cursos processados.
-echo html_writer::tag('h3', 'Cursos:');
-echo html_writer::start_tag('pre'); // Caixa para formatar a saída.
-print_object($data['courses']);
-echo html_writer::end_tag('pre');
+// Seção: Categorias
+echo '<div class="card mb-4">';
+echo '<div class="card-header bg-info text-white">';
+echo '<h4>Categorias Processadas</h4>';
+echo '</div>';
+echo '<div class="card-body">';
+if (!empty($data['categories'])) {
+    echo '<pre class="bg-light p-3 rounded border">' . htmlspecialchars(print_r($data['categories'], true)) . '</pre>';
+} else {
+    echo '<p class="text-danger">Nenhuma categoria encontrada.</p>';
+}
+echo '</div>';
+echo '</div>';
+
+// Seção: Cursos
+echo '<div class="card mb-4">';
+echo '<div class="card-header bg-warning text-white">';
+echo '<h4>Cursos Processados</h4>';
+echo '</div>';
+echo '<div class="card-body">';
+if (!empty($data['courses'])) {
+    echo '<pre class="bg-light p-3 rounded border">' . htmlspecialchars(print_r($data['courses'], true)) . '</pre>';
+} else {
+    echo '<p class="text-danger">Nenhum curso encontrado.</p>';
+}
+echo '</div>';
+echo '</div>';
+
+// Fecha o container principal
+echo '</div>';
 
 // Exibe o rodapé padrão do Moodle.
 echo $OUTPUT->footer();
