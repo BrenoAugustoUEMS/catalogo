@@ -120,6 +120,7 @@ function local_catalogo_get_second_level_categories(?string $path = null, ?int $
         }
     }
     var_dump($formatted_categories);
+    die;
     // Retorna as categorias formatadas como array numérico.
     return array_values($formatted_categories);
 }

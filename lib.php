@@ -14,9 +14,6 @@ require_once(__DIR__ . '/lib/enrolment.php');
  */
 function local_catalogo_get_data_for_template($categoryfilter) : array {
     
-    if ($categoryfilter === null) {
-        
-    }
     // Busca cursos com ou sem filtro de categoria.
     $courses = local_catalogo_get_courses_with_details($categoryfilter);
 
@@ -43,6 +40,7 @@ function local_catalogo_get_data_for_template($categoryfilter) : array {
 /**
  * Busca e formata os cursos visíveis.
  *
+ * @param int|null $categoryfilter Filtro de categoria opcional.
  * @return array Dados dos cursos formatados.
  */
 function local_catalogo_get_courses_with_details(?int $categoryfilter = null) : array {
@@ -51,19 +49,29 @@ function local_catalogo_get_courses_with_details(?int $categoryfilter = null) : 
 
     // Itera pelos cursos para enriquecer os dados.
     foreach ($courses as &$course) {
-        
-        // Adiciona a categoria, dados de inscrição e campos personalizados ao curso.
+        // Adiciona os detalhes da categoria do curso.
         $course['category'] = local_catalogo_get_category($course['category_id']);
       
-        // Processa o segundo nível, se houver.
+        // Processa o segundo nível, se houver, e adiciona os dados ao índice "category".
         $pathids = $course['category']['pathids'] ?? [];
         $second_level_id = $pathids[1] ?? null; // ID do segundo nível.
+
         if ($second_level_id) {
-            $course['second_level_category'] = local_catalogo_get_second_level_categories($course['category']['path']);
+            // Busca os detalhes do segundo nível.
+            $second_level_data = local_catalogo_get_second_level_categories($course['category']['path']);
+            
+            // Mescla as informações do segundo nível na chave 'category'.
+            $course['category'] = array_merge($course['category'], [
+                'second_level_id' => $second_level_data['id'] ?? null,
+                'second_level_name' => $second_level_data['name'] ?? null,
+            ]);
         }
+
+        // Adiciona dados de inscrição.
         $course['enrolment'] = local_catalogo_get_enrolment_data_for_course($course['id']);
+
+        // Adiciona campos personalizados.
         $course['custom_fields'] = local_catalogo_get_custom_fields_for_course($course['id']);
-        
     }
 
     return $courses; // Retorna os cursos com dados completos.
