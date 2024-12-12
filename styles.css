@@ -1,6 +1,6 @@
 :root {
-  --primary-color-dark: #333;
-  --primary-color-darker: #111;
+  --primary-color-dark: #057da6;
+  --primary-color-darker: #001f29;
   --secondary-color: #444;
   --background-light: #f1f1f1;
   --border-color: #ddd;
@@ -8,7 +8,7 @@
   --text-color-dark: #555;
   --text-color-muted: #666;
   --highlight-color: #fff;
-  --button-hover-color: #222;
+  --button-hover-color: #001f29;
   --box-shadow-light: 0px 2px 4px rgba(0, 0, 0, 0.1);
   --box-shadow-heavy: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
