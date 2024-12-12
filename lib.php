@@ -15,7 +15,7 @@ require_once(__DIR__ . '/classes/util/custom_field.php');
  */
 function local_catalogo_get_data_for_template(?int $categoryfilter = null): array {
     // Carrega as categorias de segundo nível.
-    $categories = \local_catalogo\util\category::get_second_level_categories_for_menu();
+    $categories = \local_catalogo\util\category::get_categories_for_menu($categoryfilter);
 
     // Carrega os cursos com ou sem filtro.
     $courses = \local_catalogo\util\course::get_courses_with_details($categoryfilter);

@@ -30,7 +30,7 @@ class course {
 
         foreach ($courses as $course) {
             // Obter os detalhes da categoria usando a classe `category`.
-            $category_details = \local_catalogo\util\category::get_category_details($course->category);
+            $category_details = \local_catalogo\util\category::get_categories_for_menu($course->category);
 
             // Obter os detalhes de enrol usando a classe `enrolment`.
             $enrol_details = \local_catalogo\util\enrolment::get_enrolment_details($course->id);
