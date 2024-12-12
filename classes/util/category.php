@@ -17,6 +17,9 @@ class category {
         $categories = $DB->get_records('course_categories', ['visible' => 1], 'id, name, path');
         $formatted_categories = [];
 
+        print_object($categories);
+        die;
+
         foreach ($categories as $category) {
             $pathids = explode('/', trim($category->path, '/'));
 
