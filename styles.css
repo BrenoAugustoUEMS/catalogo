@@ -101,6 +101,17 @@ body.local-catalogo #page-header {
   box-shadow: var(--box-shadow-light) inset;
 }
 
+/* Estiliza o pai com negrito */
+.catalogo-category-parent {
+  font-weight: bold;
+  color: #057da6;
+}
+
+/* Estiliza o filho com indentação */
+option:not(.catalogo-category-parent) {
+  padding-left: 10px;
+}
+
 #catalogo-filter-container button {
   padding: 10px 15px;
   font-size: 1rem;

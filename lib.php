@@ -20,19 +20,9 @@ function local_catalogo_get_data_for_template(?int $categoryfilter = null): arra
     // Carrega os cursos com ou sem filtro.
     $courses = \local_catalogo\util\course::get_courses_with_details($categoryfilter);
 
-    // Identifica a categoria ativa (caso exista).
-    $active_category = null;
-    foreach ($categories as $category) {
-        if (!empty($category['id']) && $categoryfilter === (int) $category['id']) {
-            $active_category = $category['name'];
-            break;
-        }
-    }
-
     return [
         'courses' => $courses,
         'categories' => $categories,
-        'active_category' => $active_category,
         'baseurl' => (new moodle_url('/local/catalogo/view.php'))->out(),
     ];
 }

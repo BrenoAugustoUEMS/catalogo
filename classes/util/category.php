@@ -27,6 +27,7 @@ class category {
                     'name' => $category->name,
                     'path' => $category->path,
                     'is_selected' => ((int) $category->id === (int) $categoryfilter),
+                    'is_parent' => true,
                     'children' => [],
                 ];
             }
@@ -43,6 +44,7 @@ class category {
                         'path' => $category->path,
                         'parent_id' => $category->parent,
                         'is_selected' => ((int) $category->id === (int) $categoryfilter),
+                        'is_parent' => false,
                     ];
                 }
             }
@@ -65,19 +67,28 @@ class category {
         $formatted_categories = [];
 
         foreach ($hierarchical_categories as $parent) {
-            $formatted_categories[] = [
-                'id' => $parent['id'],
-                'name' => $parent['name'],
-                'is_selected' => $parent['is_selected'],
-            ];
+            // Adiciona o pai ao menu, **exceto se for o selecionado**.
+            if ($parent['id'] !== $categoryfilter) {
+                $formatted_categories[] = [
+                    'id' => $parent['id'],
+                    'name' => $parent['name'],
+                    'is_selected' => $parent['is_selected'],
+                    'is_parent' => $parent['is_parent'],
+                ];
+            }
+        
 
             foreach ($parent['children'] as $child) {
-                $formatted_categories[] = [
-                    'id' => $child['id'],
-                    'name' => $child['name'],
-                    'parent_id' => $child['parent_id'],
-                    'is_selected' => $child['is_selected'],
-                ];
+                    // Adiciona os filhos ao menu, **exceto se for o selecionado**.
+                if ($child['id'] !== $categoryfilter) {
+                    $formatted_categories[] = [
+                        'id' => $child['id'],
+                        'name' => $child['name'],
+                        'parent_id' => $child['parent_id'],
+                        'is_selected' => $child['is_selected'],
+                        'is_parent' => $child['is_parent'],
+                    ];
+                }
             }
         }
 

@@ -30,19 +30,17 @@
                 <label for="catalogo-category">Filtrar por categoria:</label>
                 <div class="catalogo-input-button-wrapper">
                     <select id="catalogo-category" name="category">
-                        <!-- Primeiro option mostra a categoria ativa ou "Todas as categorias" -->
-                        {{#active_category}}
-                            <option value="">{{active_category}}</option>
-                        {{/active_category}}
-                        {{^active_category}}
-                            <option value="">Todas as categorias</option>
-                        {{/active_category}}
-                        
+
                         <!-- Lista de todas as categorias -->
                         {{#categories}}
-                            <option value="{{id}}" {{#is_selected}}selected{{/is_selected}}>{{name}}</option>
+                            <option value="{{id}}" 
+                                    {{#is_selected}}selected{{/is_selected}}
+                                    class="{{#is_parent}}catalogo-category-parent{{/is_parent}}">
+                                {{name}}
+                            </option>
                         {{/categories}}
                     </select>
+
 
                     <!-- Botão Filtrar -->
                     <button type="submit" title="Filtrar" class="catalogo-filter-button">
