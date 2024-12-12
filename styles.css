@@ -264,7 +264,7 @@ option:not(.catalogo-category-parent) {
 }
 
 .catalogo-tag {
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color-dark);
   color: white;
   padding: 5px 10px;
   border-radius: 16px;

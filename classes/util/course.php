@@ -58,6 +58,9 @@ class course {
             // Obter os detalhes de inscrição usando a classe `enrolment`.
             $enrol_details = \local_catalogo\util\enrolment::get_enrolment_details($course->id);
 
+            // Obter os campos personalizados (público-alvo).
+            $custom_field_data = \local_catalogo\util\custom_field::get_target_custom_field($course->id);
+
             // Formatar o curso com os detalhes necessários.
             $formatted_courses[] = [
                 'id' => $course->id,
@@ -65,6 +68,7 @@ class course {
                 'summary' => $course->summary,
                 'category' => $category_details, // Detalhes da categoria.
                 'enrolment' => $enrol_details, // Detalhes da inscrição.
+                'custom_fields' => $custom_field_data,
                 'url' => (new \moodle_url('/course/view.php', ['id' => $course->id]))->out(false),
                 'intropage_url' => (new \moodle_url('/local/intropage/index.php', ['courseid' => $course->id]))->out(false),
             ];
