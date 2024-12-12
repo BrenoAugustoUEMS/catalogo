@@ -280,6 +280,7 @@ option:not(.catalogo-category-parent) {
   text-align: center;
   text-decoration: none !important;
   font-weight: bold;
+  width: 100%;
 }
 
 .catalogo-item-button:hover {
