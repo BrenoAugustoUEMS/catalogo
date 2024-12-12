@@ -65,7 +65,7 @@ class course {
             $formatted_courses[] = [
                 'id' => $course->id,
                 'fullname' => $course->fullname,
-                'summary' => $course->summary,
+                'summary' => strip_tags($course->summary),
                 'category' => $category_details, // Detalhes da categoria.
                 'enrolment' => $enrol_details, // Detalhes da inscrição.
                 'custom_fields' => $custom_field_data,
