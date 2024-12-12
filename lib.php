@@ -20,8 +20,12 @@ function local_catalogo_get_data_for_template(?int $categoryfilter = null): arra
     // Carrega os cursos com ou sem filtro.
     $courses = \local_catalogo\util\course::get_courses_with_details($categoryfilter);
 
+    // Conta o número de cursos filtrados.
+    $course_count = count($courses);  
+
     return [
         'courses' => $courses,
+        'course_count' => $course_count,
         'categories' => $categories,
         'baseurl' => (new moodle_url('/local/catalogo/view.php'))->out(),
     ];
