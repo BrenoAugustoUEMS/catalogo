@@ -36,7 +36,7 @@
                             <option value="{{id}}" 
                                     {{#is_selected}}selected{{/is_selected}}
                                     class="{{#is_parent}}catalogo-category-parent{{/is_parent}}">
-                                {{name}}
+                                {{^is_parent}}&emsp;{{/is_parent}}{{name}}
                             </option>
                         {{/categories}}
                     </select>
@@ -71,7 +71,7 @@
             <div class="catalogo-list-item d-flex flex-md-row flex-column">
                 <div class="catalogo-item-content">
                     <!-- Imagem ou logotipo -->
-                    <a href="{{intropage_url}}" target="_blank" class="catalogo-item-image">
+                    <a href="{{intropage_url}}" target="_blank" class="catalogo-item-image align-self-center">
                         <img src="https://picsum.photos/200?random={{id}}" alt="Logotipo do edital {{fullname}}">
                     </a>
     

@@ -53,7 +53,7 @@ class course {
         // Formata os cursos encontrados.
         foreach ($courses as $course) {
             // Obter os detalhes da categoria usando a classe `category`.
-            $category_details = \local_catalogo\util\category::get_categories_for_menu($course->category);
+            $category_details = \local_catalogo\util\category::get_single_category_details($course->category);
 
             // Obter os detalhes de inscrição usando a classe `enrolment`.
             $enrol_details = \local_catalogo\util\enrolment::get_enrolment_details($course->id);
