@@ -59,6 +59,8 @@ body.local-catalogo #page-header {
 
 .catalogo-page-wrapper {
   padding: 0 3em;
+  max-width: 960px;
+  justify-self: center;
 }
 
 #catalogo-filter-container {
