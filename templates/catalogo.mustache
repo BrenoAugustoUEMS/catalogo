@@ -104,17 +104,17 @@
                 </div>
     
                 <!-- Informações adicionais e botão -->
-                <div class="catalogo-item-extra d-flex flex-column align-items-md-center justify-content-center">
-                    <!-- Prazo de inscrição -->
-                    <div class="catalogo-item-dates mb-2 mb-md-0">
-                        <p class="catalogo-deadline text-muted small">
-                            Inscrições até: <strong class="large">{{enrolment.enrolend}}</strong>
-                        </p>
+                <div class="catalogo-item-extra d-flex flex-column align-items-md-center justify-content-between">
+                    
+                    <!-- Container da data -->
+                    <div class="catalogo-item-dates-container d-flex flex-column align-items-start mb-3 mb-md-0">
+                        <p class="catalogo-date-label text-muted small mb-1">Inscrições até:</p>
+                        <p class="catalogo-date-deadline text-dark h5 m-0"><strong>{{enrolment.enrolend}}</strong></p>
                     </div>
 
                     <!-- Botão de acesso -->
-                    <div class="catalogo-item-button-container">
-                        <a href="{{intropage_url}}" class=".catalogo-item-button btn btn-primary">Ir para o Edital</a>
+                    <div class="catalogo-item-button-container text-md-right">
+                        <a href="{{intropage_url}}" class="catalogo-item-button btn btn-primary">Ir para o Edital</a>
                     </div>
                 </div>
 

@@ -29,11 +29,18 @@ class enrolment {
                 'self_enrol' => false, // Self enrol não está ativo.
             ];
         }
+        
+        // Define o formato personalizado: "d/m/Y, H\h".
+        $customformat = '%d/%m/%Y, %Hh%M'; // Exemplo: 27/12/2024, 00h.
 
         // Formata os dados de inscrição.
         $formatted_enrolment = [
-            'enrolstart' => !empty($self_enrolment->enrolstartdate) ? userdate($self_enrolment->enrolstartdate) : 'Sem início definido',
-            'enrolend' => !empty($self_enrolment->enrolenddate) ? userdate($self_enrolment->enrolenddate) : 'Sem término definido',
+            'enrolstart' => !empty($self_enrolment->enrolstartdate) 
+                ? userdate($self_enrolment->enrolstartdate, $customformat) 
+                : 'Sem início definido',
+            'enrolend' => !empty($self_enrolment->enrolenddate) 
+                ? userdate($self_enrolment->enrolenddate, $customformat) 
+                : 'Sem término definido',
             'status' => $self_enrolment->status == 0 ? 'Ativo' : 'Inativo',
             'self_enrol' => $self_enrolment->status == 0, // True se o self enrol estiver ativo.
         ];
