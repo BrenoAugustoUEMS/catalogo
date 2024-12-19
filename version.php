@@ -25,8 +25,8 @@
  defined('MOODLE_INTERNAL') || die();
  
  $plugin->component = 'local_catalogo'; // Nome do plugin.
- $plugin->version = 2024121202;         // Data da versão no formato YYYYMMDDXX.
- $plugin->release = 'v0.1';             // Versão amigável para humanos.
+ $plugin->version = 2024121900;         // Data da versão no formato YYYYMMDDXX.
+ $plugin->release = 'v0.2';             // Versão amigável para humanos.
  $plugin->requires = 2021051700;        // Versão mínima do Moodle (3.11 ou superior).
  $plugin->maturity = MATURITY_ALPHA;    // Maturidade do plugin: ALPHA, BETA ou STABLE.
  
