@@ -46,6 +46,8 @@ class course {
             $params = array_merge($params, $inparams);
         }
 
+        $sql .= " ORDER BY id DESC"; // Para pegar os cursos mais recentes primeiro.
+
         // Executa a consulta para buscar os cursos.
         $courses = $DB->get_records_sql($sql, $params);
         $formatted_courses = [];

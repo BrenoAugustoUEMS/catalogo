@@ -259,10 +259,10 @@ option:not(.catalogo-category-parent) {
   mask-repeat: no-repeat;
 }
 
-.catalogo-item-interests {
+.catalogo-interest-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 6px; /* Agora o gap horizontal e vertical funcionam */
 }
 
 .catalogo-tag {
@@ -271,6 +271,7 @@ option:not(.catalogo-category-parent) {
   padding: 5px 10px;
   border-radius: 16px;
   font-size: 0.8rem;
+  display: inline-flex; /* Garante que respeite padding e border-radius */
 }
 
 /*------------------------------------------------------ Data de inscrição eBotão de acesso --------------------------------------------------- */
