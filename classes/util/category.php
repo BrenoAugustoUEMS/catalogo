@@ -88,6 +88,7 @@ class category {
             foreach ($parent['children'] as $child) {
                     // Adiciona os filhos ao menu, **exceto se for o selecionado**.
                 if ($child['id'] !== $categoryfilter) {
+
                     $formatted_categories[] = [
                         'id' => $child['id'],
                         'name' => $child['name'],
@@ -113,6 +114,19 @@ class category {
     public static function get_single_category_details(int $categoryid): array {
         global $DB;
 
+        // 🔹 Definindo imagens específicas para as categorias filhas (associadas pelo ID da categoria)
+        $category_images = [
+            309 => 'P-IC.png',
+            310 => 'P-PP.png',
+            306 => 'EX-PEX.png',
+            308 => 'EX-CUR.png',
+            307 => 'EX-CEL',
+            312 => 'EN-E.png',
+            313 => 'EN-PEN.png',
+            311 => 'DRI-MOB.png',
+            // Adicione mais categorias filhas e suas imagens aqui
+        ];
+
         // Busca a categoria pelo ID.
         $category = $DB->get_record('course_categories', ['id' => $categoryid], 'id, name, path, parent', IGNORE_MISSING);
 
@@ -128,11 +142,17 @@ class category {
                 }
             }
 
+            // 🔹 Verifica se a categoria tem uma imagem no mapa; se não, usa "default.png"
+            $image_url = isset($category_images[$categoryid]) 
+            ? new \moodle_url("/local/catalogo/pix/category-img/{$category_images[$categoryid]}")
+            : new \moodle_url("/local/catalogo/pix/category-img/default.png");
+
             return [
                 'id' => $category->id,
                 'name' => $category->name,
                 'path' => implode(' > ', $pathnames), // Caminho amigável.
                 'parent_id' => $category->parent, // ID do pai.
+                'image_url' => $image_url->out(false),
             ];
         }
 
@@ -142,6 +162,7 @@ class category {
             'name' => 'Categoria não encontrada',
             'path' => 'Caminho não encontrado',
             'parent_id' => null,
+            'image_url' => (new \moodle_url("/local/catalogo/pix/category-img/default.png"))->out(false),
         ];
     }
 
