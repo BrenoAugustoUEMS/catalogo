@@ -123,6 +123,7 @@ class category {
             307 => 'EX-CEL',
             312 => 'EN-E.png',
             313 => 'EN-PEN.png',
+            314 => 'EN-PIM.png',
             311 => 'DRI-MOB.png',
             // Adicione mais categorias filhas e suas imagens aqui
         ];
