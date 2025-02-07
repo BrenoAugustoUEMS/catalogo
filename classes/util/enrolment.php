@@ -23,8 +23,8 @@ class enrolment {
         // Caso não exista método de auto-inscrição, retorna dados padrão.
         if (!$self_enrolment) {
             return [
-                'enrolstart' => 'Sem início definido',
-                'enrolend' => 'Sem término definido',
+                'enrolstart' => 'Data Indefinida',
+                'enrolend' => 'Data Indefinida',
                 'status' => 'Indisponível',
                 'self_enrol' => false, // Self enrol não está ativo.
             ];
@@ -37,10 +37,10 @@ class enrolment {
         $formatted_enrolment = [
             'enrolstart' => !empty($self_enrolment->enrolstartdate) 
                 ? userdate($self_enrolment->enrolstartdate, $customformat) 
-                : 'Sem início definido',
+                : 'Data Indefinida',
             'enrolend' => !empty($self_enrolment->enrolenddate) 
                 ? userdate($self_enrolment->enrolenddate, $customformat) 
-                : 'Sem término definido',
+                : 'Data Indefinida',
             'status' => $self_enrolment->status == 0 ? 'Ativo' : 'Inativo',
             'self_enrol' => $self_enrolment->status == 0, // True se o self enrol estiver ativo.
         ];

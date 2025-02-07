@@ -277,7 +277,9 @@ option:not(.catalogo-category-parent) {
 /*------------------------------------------------------ Data de inscrição eBotão de acesso --------------------------------------------------- */
 /* Container principal (Flexbox para layout responsivo) */
 .catalogo-item-extra {
+  display: flex;
   gap: 1em; /* Espaçamento entre os itens */
+  justify-content: center !important;
 }
 
 /* Estilo base para o contêiner do fluxo contínuo */
@@ -297,33 +299,44 @@ option:not(.catalogo-category-parent) {
 
 /* Estilo do container de data */
 .catalogo-item-dates-container {
-  text-align: left; /* Garante alinhamento à esquerda */
+  text-align: left; /* Alinhamento à esquerda */
+  padding: 8px; /* Espaçamento interno */
+  background-color: #e3f2fd; /* Fundo suave para destacar o container */
+  border-radius: 6px; /* Bordas arredondadas */
+  border: 1px solid #e9ecef; /* Borda sutil */
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
 }
 
+/* Estilo do rótulo "Inscrições até:" */
 .catalogo-date-label {
-  font-size: 0.8rem; /* Reduz o texto para dar mais destaque à data */
-  color: var(--text-muted-color); /* Usa a cor de texto secundária */
+  font-size: 0.75rem; /* Texto pequeno e discreto */
+  color: #6c757d; /* Cor de texto secundária */
+  margin-bottom: 4px; /* Espaçamento inferior reduzido */
+  letter-spacing: 0.5px; /* Espaçamento entre letras para melhor legibilidade */
 }
 
+/* Estilo da data de prazo */
 .catalogo-date-deadline {
-  font-size: 1.2rem; /* Dá maior destaque à data */
-  font-weight: bold; /* Torna a data mais visível */
-  color: var(--primary-color-dark); /* Aplica uma cor de destaque */
+  font-size: 1.2rem; /* Tamanho maior para destacar a data */
+  font-weight: 600; /* Peso da fonte (sem ser muito pesado) */
+  color: #2c3e50; /* Cor escura para contraste */
+  margin: 0; /* Remove margens padrão */
 }
 
 /* Estilo do botão */
 .catalogo-item-button {
   display: flex;
-  align-self: center;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  margin: 0;
   background-color: var(--primary-color-dark);
   color: white !important;
   padding: 10px 20px;
   border-radius: 6px;
-  text-align: center;
   text-decoration: none !important;
   font-weight: bold;
   width: 100%; /* Garante que o botão ocupe toda a largura em telas menores */
-  max-width: 200px; /* Define um limite de largura para o botão */
 }
 
 .catalogo-item-button:hover {
@@ -333,8 +346,9 @@ option:not(.catalogo-category-parent) {
 /* Botão alinhado à direita em telas maiores */
 .catalogo-item-button-container {
   display: flex;
-  align-self: center;
-  text-align: right;
+  justify-content: center; /* Centraliza o botão horizontalmente */
+  align-items: center; /* Centraliza o botão verticalmente */
+  width: 100%;
 }
 
 /*------------------------------------------------- Paginação ------------------------------*/
