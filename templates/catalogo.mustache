@@ -106,18 +106,19 @@
                     
                     <!-- Fluxo Contínuo -->
                     {{#custom_fields.hasfluxo}}  <!-- Se hasfluxo for true -->
-                        <p class="catalogo-fluxo">
-                            <span class="catalogo-tag">Fluxo Contínuo</span>
-                        </p>
-                    {{/custom_fields.hasfluxo}}
-                    
-                    <!-- Período de Inscrição -->
-                    {{^custom_fields.hasfluxo}}  <!-- Se hasfluxo for false -->
-                        <div class="catalogo-item-dates-container d-flex flex-column align-items-start mb-3 mb-md-0">
-                            <p class="catalogo-date-label text-muted small mb-1">Inscrições até:</p>
-                            <p class="catalogo-date-deadline text-dark h5 m-0"><strong>{{enrolment.enrolend}}</strong></p>
+                        <div class="catalogo-item-dates-container">
+                            <p class="catalogo-date-continuous"><strong>Fluxo Contínuo</strong></p>
                         </div>
                     {{/custom_fields.hasfluxo}}
+
+                    <!-- Período de Inscrição -->
+                    {{^custom_fields.hasfluxo}}  <!-- Se hasfluxo for false -->
+                        <div class="catalogo-item-dates-container">
+                            <p class="catalogo-date-label">Inscrições até:</p>
+                            <p class="catalogo-date-deadline"><strong>{{enrolment.enrolend}}</strong></p>
+                        </div>
+                    {{/custom_fields.hasfluxo}}
+
 
                     <!-- Botão de acesso -->
                     <div class="catalogo-item-button-container">
