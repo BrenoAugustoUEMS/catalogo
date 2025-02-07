@@ -280,6 +280,21 @@ option:not(.catalogo-category-parent) {
   gap: 1em; /* Espaçamento entre os itens */
 }
 
+/* Estilo base para o contêiner do fluxo contínuo */
+.catalogo-fluxo {
+  display: flex;
+  padding: 8px 12px;
+  align-self: center;
+  text-align: center;
+  background-color: #e3f2fd; /* Cor de fundo suave */
+  border-radius: 20px; /* Bordas arredondadas */
+  font-size: 14px;
+  font-weight: 500;
+  color: #1976d2; /* Cor do texto */
+  margin: 10px; /* Espaçamento inferior */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
 /* Estilo do container de data */
 .catalogo-item-dates-container {
   text-align: left; /* Garante alinhamento à esquerda */
@@ -298,6 +313,8 @@ option:not(.catalogo-category-parent) {
 
 /* Estilo do botão */
 .catalogo-item-button {
+  display: flex;
+  align-self: center;
   background-color: var(--primary-color-dark);
   color: white !important;
   padding: 10px 20px;
@@ -315,6 +332,8 @@ option:not(.catalogo-category-parent) {
 
 /* Botão alinhado à direita em telas maiores */
 .catalogo-item-button-container {
+  display: flex;
+  align-self: center;
   text-align: right;
 }
 
