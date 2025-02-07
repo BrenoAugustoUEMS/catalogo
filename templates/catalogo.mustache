@@ -113,9 +113,11 @@
 
                     <!-- Período de Inscrição -->
                     {{^custom_fields.hasfluxo}}  <!-- Se hasfluxo for false -->
-                        <div class="catalogo-item-dates-container">
+                        <div class="d-flex flex-column align-items-md-center justify-content-center">
                             <p class="catalogo-date-label">Inscrições até:</p>
-                            <p class="catalogo-date-deadline"><strong>{{enrolment.enrolend}}</strong></p>
+                            <div class="catalogo-item-dates-container">
+                                <p class="catalogo-date-deadline"><strong>{{enrolment.enrolend}}</strong></p>
+                            </div>
                         </div>
                     {{/custom_fields.hasfluxo}}
 
