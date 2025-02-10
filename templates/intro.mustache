@@ -1,80 +1,40 @@
-{{!
-    This file is part of Moodle - http://moodle.org/
-
-    Moodle is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    Moodle is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-
-    /**
-     * Template do conteúdo da página de introdução do curso
-     *
-     * @package    local_catalogo
-     * @copyright  2024 Breno Augusto <brenoaugusto@uems.br>
-     * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-     */
-}}
-
 <div class="intropage-header">
-    <h1>{{course.fullname}}</h1>
+    <h1>{{fullname}}</h1>
 </div>
 
 <div class="intropage-content">
 
     <!-- Main Content -->
-
     <div class="intropage-main">
-        <!-- Inscrições -->
         <div class="intropage-section d-flex">
-            <!-- Cabeçalho da seção -->
             <div class="intropage-info-item">
                 <div class="intropage-info-header">
                     <i class="fa-solid fa-calendar-alt"></i>
                     <strong>Inscrições:</strong>
                 </div>
 
-                <!-- Período de inscrições -->
                 <div class="d-flex flex-row flex-wrap intropage-enroll-date px-3 pt-3">
                     <div class="d-flex align-items-center">
                         <span class="text-muted mx-2 mb-2">De:</span>
-                        <strong class="h3 mr-5 text-nowrap">{{enrol.enrolstart}}</strong>
+                        <strong class="h3 mr-5 text-nowrap">{{enrolment.enrolstart}}</strong>
                     </div>
                     <div class="d-flex align-items-center">
                         <span class="text-muted mx-2 mb-2">Até:</span>
-                        <strong class="h3">{{enrol.enrolend}}</strong>
+                        <strong class="h3">{{enrolment.enrolend}}</strong>
                     </div>
-                </div>
-
-                <!-- Legenda -->
-                <div class="intropage-legend text-muted fw-light mx-2">
-                    GMT-04 (Horário Padrão do MS)
                 </div>
             </div>
         </div>
-
 
         <!-- Detalhes -->
         <div class="intropage-section">
-            <div class="intropage-title">
-                <h3>Detalhes</h3>
-            </div>
-            <div class="intropage-summary">
-                {{{course.summary}}}
-            </div>
+            <h3>Detalhes</h3>
+            <p>{{summary}}</p>
         </div>
+
         <!-- Selos da ODS -->
         <div class="intropage-section">
-            <div class="intropage-title">
-                <h3>Objetivos de Desenvolvimento Sustentável (ODS)</h3>
-            </div>
+            <h3>Objetivos de Desenvolvimento Sustentável (ODS)</h3>
             <div class="intropage-ods-badges">
                 {{#customfields.ods}}
                     <div class="ods-badge">
@@ -88,12 +48,9 @@
         </div>
     </div>
 
-    <!-- SIDEBAR -->    
-
+    <!-- SIDEBAR -->
     <div class="intropage-sidebar">
-        <!-- Botão com URL externa -->
         <div class="intropage-button-collection">
-            <!-- Edital -->
             {{#customfields.edital.url}}
             <a href="{{customfields.edital.url}}" class="intropage-button bg-light border" target="_blank">
                 <span class="text-dark">Edital</span> <i class="fa-solid fa-newspaper text-dark"></i>
@@ -104,13 +61,8 @@
                 <span class="text-black-50">Edital Indisponível</span> <i class="fa-solid fa-newspaper text-black-50"></i>
             </div>
             {{/customfields.edital.url}}
-            <!-- Inscreva-se -->
+
             {{#enrol.button.url}}
-            <a href="{{enrol.button.url}}" class="intropage-button">
-                <span>{{enrol.button.text}}</span><i class="{{enrol.button.icon}}"></i>
-            </a>
-            {{/enrol.button.url}}
-            {{^enrol.button.url}}
             <a href="{{enrol.button.url}}" class="intropage-button">
                 <span>{{enrol.button.text}}</span><i class="{{enrol.button.icon}}"></i>
             </a>
@@ -118,29 +70,12 @@
         </div>
 
         <div class="intropage-section m-0">
-            <!-- Categoria -->
             <div class="intropage-info-item">
                 <div class="intropage-info-header">
                     <i class="fa-solid fa-layer-group"></i>
                     <strong>Categoria:</strong>
                 </div>
-                <p class="intropage-info-text">{{course.categoryname}}</p>
-            </div>
-             <!-- Ações -->
-            <div class="intropage-info-item">
-                <div class="intropage-info-header">
-                    <i class="fa-solid fa-check"></i>
-                    <strong>Ações Contempladas:</strong>
-                </div>
-                <p class="intropage-info-text">{{customfields.actions}}</p>
-            </div>
-            <!-- Público-alvo -->
-            <div class="intropage-info-item">
-                <div class="intropage-info-header">
-                    <i class="fa-solid fa-users"></i>
-                    <strong>Público-Alvo:</strong>
-                </div>
-                <p class="intropage-info-text">{{customfields.target}}</p>
+                <p class="intropage-info-text">{{category.path}}</p>
             </div>
         </div>
     </div>

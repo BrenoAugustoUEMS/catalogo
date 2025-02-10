@@ -27,7 +27,7 @@ body.local-catalogo div[role="main"] {
 }
 
 /* Esconde e limpa a barra de navegação secundária e o cabeçalho */
-body.local-catalogoo .secondary-navigation,
+body.local-catalogo .secondary-navigation,
 body.local-catalogo #page-header {
   display: none;
 }
@@ -162,13 +162,17 @@ option:not(.catalogo-category-parent) {
 }
 
 #catalogo-filter-container button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px 15px;
   font-size: 1rem;
   font-weight: bold;
   color: var(--highlight-color);
   background-color: var(--primary-color-dark);
   border: none;
-  border-radius: 4px;
+  border-radius: 30px;
+
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
   flex-shrink: 0; /* Mantém os botões com tamanho fixo */
@@ -262,7 +266,7 @@ option:not(.catalogo-category-parent) {
   width: 160px;
   height: 160px;
   object-fit: contain;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .catalogo-item-info {
@@ -412,7 +416,7 @@ option:not(.catalogo-category-parent) {
   background-color: var(--primary-color-dark);
   color: white !important;
   padding: 10px 20px;
-  border-radius: 6px;
+  border-radius: 50px;
   text-decoration: none !important;
   font-weight: bold;
   width: 100%; /* Garante que o botão ocupe toda a largura em telas menores */

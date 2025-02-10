@@ -11,14 +11,12 @@ $PAGE->set_pagelayout('base');
 $PAGE->add_body_class('local-catalogo');
 $PAGE->requires->css('/local/catalogo/styles.css');
 
-// Captura os parâmetros de busca
-$search = optional_param('search', '', PARAM_RAW_TRIMMED); // Obtém o termo de busca digitado
-
-// Captura o filtro enviado pela URL e garante que seja um inteiro ou null.
+// Obtém os parâmetros da URL.
+$search = optional_param('search', '', PARAM_RAW_TRIMMED);
 $categoryfilter = optional_param('category', 0, PARAM_INT);
 $categoryfilter = ($categoryfilter > 0) ? $categoryfilter : null;
 
-// Gera os dados para o template.
+// Obtém os dados processados para o template.
 $data = local_catalogo_get_data_for_template($categoryfilter, $search);
 
 // Obtém o renderer personalizado do plugin.
