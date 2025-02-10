@@ -21,38 +21,46 @@
     
     <!-- Container para a busca e o filtro -->
     <div id="catalogo-filter-container">
-       
-        <!-- Seção de filtro por categorias -->
-        <section id="catalogo-filter-section">
-            <form method="get" action="{{baseurl}}">
-                <label for="catalogo-category">Filtrar por categoria:</label>
-                <div class="catalogo-input-button-wrapper">
-                    <select id="catalogo-category" name="category">
 
-                        <!-- Lista de todas as categorias -->
-                        <option value="">Todas as Categorias</option>
-                        {{#categories}}
-                            <option value="{{id}}" 
-                                    {{#is_selected}}selected{{/is_selected}}
-                                    class="{{#is_parent}}catalogo-category-parent{{/is_parent}}">
-                                {{^is_parent}}&emsp;{{/is_parent}}{{name}}
-                            </option>
-                        {{/categories}}
-                    </select>
+        <!-- Formulário de busca -->
+        <form method="GET" action="" class="catalogo-filter-form">
+            <label for="catalogo-category">Filtro de Busca:</label>
+            <div class="catalogo-input-button-wrapper">
+                <input type="text" name="search" class="catalogo-search-input"
+                    placeholder="Buscar editais..." value="{{search_term}}">
+                <button type="submit" class="catalogo-filter-button" title="Buscar">
+                    <i class="fa-solid fa-search"></i>
+                </button>
+            </div>
+        </form>
 
+        <!-- Formulário de filtro por categoria -->
+        <form method="get" action="{{baseurl}}" class="catalogo-filter-form">
+            <label for="catalogo-category">Filtrar por Categoria:</label>
+            <div class="catalogo-input-button-wrapper">
+                <select id="catalogo-category" name="category">
+                    <option value="">Todas as Categorias</option>
+                    {{#categories}}
+                        <option value="{{id}}" 
+                                {{#is_selected}}selected{{/is_selected}}
+                                class="{{#is_parent}}catalogo-category-parent{{/is_parent}}">
+                            {{^is_parent}}&emsp;{{/is_parent}}{{name}}
+                        </option>
+                    {{/categories}}
+                </select>
 
-                    <!-- Botão Filtrar -->
-                    <button type="submit" title="Filtrar" class="catalogo-filter-button">
-                        <i class="fa-solid fa-filter"></i>
-                    </button>
+                <!-- Botão Filtrar -->
+                <button type="submit" title="Filtrar" class="catalogo-filter-button">
+                    <i class="fa-solid fa-filter"></i>
+                </button>
 
-                    <!-- Botão Limpar Filtro -->
-                    <button type="button" title="Limpar Filtro" class="catalogo-filter-button" onclick="window.location.href='{{baseurl}}'">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-            </form>
-        </section>
+                <!-- Botão Limpar Filtro -->
+                <button type="button" title="Limpar Filtro" class="catalogo-filter-button" 
+                        onclick="window.location.href='{{baseurl}}'">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </form>
 
     </div>
     

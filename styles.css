@@ -63,11 +63,28 @@ body.local-catalogo #page-header {
   margin: 0 auto;
 }
 
+/* 📌 Campo de entrada */
+.catalogo-search-input {
+  width: 100%;
+  max-width: 300px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: var(--background-light);
+  color: var(--text-color-dark);
+}
+
+.catalogo-search-button:hover {
+  background-color: var(--button-hover-color);
+}
+
 #catalogo-filter-container {
   display: flex;
+  flex-wrap: wrap; /* Permite que os elementos quebrem quando necessário */
   flex-direction: row;
-  gap: 2rem;
-  justify-content: space-evenly;
+  gap: 1.5rem;
+  justify-content: space-between;
   align-items: center;
   background-color: var(--background-light);
   border: 1px solid var(--border-color);
@@ -79,9 +96,39 @@ body.local-catalogo #page-header {
 
 #catalogo-filter-container section {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1rem;
+}
+
+/* 📌 Formulário da busca e do filtro */
+.catalogo-filter-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: start;
+  flex: 1; /* Faz os dois ocuparem o mesmo espaço */
+  min-width: 250px; /* Define um tamanho mínimo */
+  width: 100%;
+}
+
+/* 📌 Input e Select ajustados para ocupar espaço igualmente */
+.catalogo-search-input,
+#catalogo-category {
+  flex-grow: 1;
+  min-width: 180px; /* Define um tamanho mínimo */
+  height: 40px;
+  padding: 0 10px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background-color: var(--highlight-color);
+  color: var(--text-color-dark);
+  box-shadow: var(--box-shadow-light) inset;
 }
 
 #catalogo-filter-container label {
@@ -124,6 +171,7 @@ option:not(.catalogo-category-parent) {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
+  flex-shrink: 0; /* Mantém os botões com tamanho fixo */
 }
 
 #catalogo-filter-container button:hover {
@@ -137,6 +185,8 @@ option:not(.catalogo-category-parent) {
   align-content: center;
   gap: 10px; /* Espaço entre os campos */
   margin: 0;
+  flex: 1; /* Permite que os elementos internos cresçam */
+  width: 100%; /* Ocupa todo o espaço disponível */
 }
 
 .catalogo-input-button-wrapper input,
@@ -152,7 +202,7 @@ option:not(.catalogo-category-parent) {
 
 .catalogo-input-button-wrapper input,
 .catalogo-input-button-wrapper select {
-  flex: 1; /* Faz com que o input ou select ocupe o máximo de espaço disponível */
+  flex-grow: 1; /* O input e select ocupam todo o espaço */
 }
 
 .catalogo-input-button-wrapper button {
@@ -406,6 +456,10 @@ option:not(.catalogo-category-parent) {
 @media (max-width: 767.98px) {
   /* Estilos para dispositivos pequenos */
 
+  .catalogo-page-wrapper {
+    padding: 0 2em;
+  }
+
   .catalogo-item-interests {
     display: none;
   }
@@ -417,6 +471,9 @@ option:not(.catalogo-category-parent) {
   #catalogo-search-section,
   #catalogo-filter-section {
     flex: 1;
+    width: 100%;
+  }
+  .catalogo-filter-form {
     width: 100%;
   }
 }
