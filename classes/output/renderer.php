@@ -10,7 +10,7 @@ defined('MOODLE_INTERNAL') || die();
 class renderer extends \plugin_renderer_base {
 
     /**
-     * Renderiza o conteúdo principal.
+     * Renderiza o conteúdo principal da página de catálogo.
      *
      * @param array $data Dados para o template.
      * @return string HTML renderizado.
@@ -19,5 +19,15 @@ class renderer extends \plugin_renderer_base {
         #print_object($data);
         #die;
         return $this->render_from_template('local_catalogo/catalogo', $data);
+    }
+
+    /**
+     * Renderiza o conteúdo principal da página de introdução.
+     *
+     * @param array $data Dados para o template.
+     * @return string HTML renderizado.
+     */
+    public function render_course_intro($data) {
+        return $this->render_from_template('local_catalogo/intro', $data);
     }
 }
