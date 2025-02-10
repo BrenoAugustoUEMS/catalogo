@@ -112,15 +112,16 @@
                     {{/custom_fields.hasfluxo}}
 
                     <!-- Período de Inscrição -->
-                    {{^custom_fields.hasfluxo}}  <!-- Se hasfluxo for false -->
-                        <div class="d-flex flex-column align-items-md-center justify-content-center">
-                            <p class="catalogo-date-label">Inscrições até:</p>
-                            <div class="catalogo-item-dates-container">
-                                <p class="catalogo-date-deadline"><strong>{{enrolment.enrolend}}</strong></p>
+                    {{^custom_fields.hasfluxo}}  <!-- Se não for fluxo contínuo -->
+                        {{#enrolment.enrolend}}  <!-- Só exibe se enrolend tiver uma data válida -->
+                            <div class="d-flex flex-column align-items-md-center justify-content-center">
+                                <p class="catalogo-date-label">Inscrições até:</p>
+                                <div class="catalogo-item-dates-container">
+                                    <p class="catalogo-date-deadline"><strong>{{enrolment.enrolend}}</strong></p>
+                                </div>
                             </div>
-                        </div>
+                        {{/enrolment.enrolend}}
                     {{/custom_fields.hasfluxo}}
-
 
                     <!-- Botão de acesso -->
                     <div class="catalogo-item-button-container">

@@ -282,6 +282,7 @@ option:not(.catalogo-category-parent) {
   display: flex;
   gap: 1em; /* Espaçamento entre os itens */
   justify-content: center !important;
+  align-items: center;
 }
 
 /* 📌 Container principal de datas */
@@ -291,6 +292,7 @@ option:not(.catalogo-category-parent) {
   align-items: center;
   justify-content: center;
   text-align: center;
+  width: fit-content;
   padding: 6px 8px;
   background: linear-gradient(
     135deg,
@@ -309,6 +311,7 @@ option:not(.catalogo-category-parent) {
   letter-spacing: 0.8px;
   margin-bottom: 6px;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 6px;
 }
