@@ -13,12 +13,12 @@ require_once(__DIR__ . '/classes/util/custom_field.php');
  * @param int|null $categoryfilter ID da categoria para filtrar (opcional).
  * @return array Dados organizados para o template.
  */
-function local_catalogo_get_data_for_template(?int $categoryfilter = null): array {
+function local_catalogo_get_data_for_template(?int $categoryfilter = null, ?string $search = null): array {
     // Carrega as categorias de segundo nível.
     $categories = \local_catalogo\util\category::get_categories_for_menu($categoryfilter);
 
     // Carrega os cursos com ou sem filtro.
-    $courses = \local_catalogo\util\course::get_courses_with_details($categoryfilter);
+    $courses = \local_catalogo\util\course::get_courses_with_details($categoryfilter, $search);
 
     // Conta o número de cursos filtrados.
     $course_count = count($courses);  
@@ -27,6 +27,7 @@ function local_catalogo_get_data_for_template(?int $categoryfilter = null): arra
         'courses' => $courses,
         'course_count' => $course_count,
         'categories' => $categories,
+        'search_term' => $search,
         'baseurl' => (new moodle_url('/local/catalogo/view.php'))->out(),
     ];
 }

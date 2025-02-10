@@ -11,7 +11,7 @@ class course {
      * @param int|null $categoryfilter ID da categoria para filtrar (opcional).
      * @return array Lista de cursos com detalhes.
      */
-    public static function get_courses_with_details(?int $categoryfilter = null): array {
+    public static function get_courses_with_details(?int $categoryfilter = null, ?string $search = null): array {
         global $DB;
     
         // 🔹 Inicializa o array de IDs de categorias.
@@ -27,7 +27,7 @@ class course {
                     $categoryids[] = $child['id'];
                 }
             }
-        }       
+        }
     
         // 🔹 Monta a consulta SQL para buscar os cursos.
         $sql = "SELECT id, fullname, summary, category
@@ -42,6 +42,23 @@ class course {
             $params = array_merge($params, $inparams);
         }
     
+        // 🔍 Aplica filtro de busca pelo título (fullname)
+        if (!empty($search)) {
+            $search = trim($search);
+            $search = str_replace(['%', '_'], ['\%', '\_'], $search); // Escapa caracteres especiais
+            $searchterms = explode(' ', $search); // Divide a busca em palavras
+            $conditions = [];
+            
+            foreach ($searchterms as $index => $term) {
+                $paramname = "search{$index}"; // Nome único para cada termo
+                $conditions[] = "LOWER(fullname) LIKE LOWER(:{$paramname})";
+                $params[$paramname] = "%{$term}%"; // Adiciona os % para busca parcial
+            }
+        
+            $sql .= " AND (" . implode(" AND ", $conditions) . ")"; // Usa AND para exigir que todas as palavras estejam presentes
+        }
+
+        // 🔹 Adiciona a cláusula ORDER BY para ordenar por ID em ordem decrescente.
         $sql .= " ORDER BY id DESC"; // Para pegar os cursos mais recentes primeiro.
     
         // 🔹 Executa a consulta para buscar os cursos.
@@ -61,13 +78,13 @@ class course {
     
             // 🔹 Processando "fluxo"
             $fluxo_value = isset($custom_fields['fluxo']) ? trim($custom_fields['fluxo']) : null;
-
+    
             // 🔹 Converter valores numéricos para "Sim" ou "Não"
             $fluxo_map = [
                 '1' => 'sim',
                 '2' => 'não'
             ];
-
+    
             $hasfluxo = isset($fluxo_map[$fluxo_value]) && $fluxo_map[$fluxo_value] === 'sim';
     
             // 🔹 Processando "target" corretamente
@@ -98,5 +115,6 @@ class course {
     
         return $formatted_courses;
     }
+    
     
 }
