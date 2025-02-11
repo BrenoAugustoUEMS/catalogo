@@ -1,0 +1,35 @@
+:root {
+  --primary-color-dark: #057da6;
+  --primary-color-darker: #001f29;
+  --secondary-color: #444;
+  --background-light: #f1f1f1;
+  --border-color: #ddd;
+  --title-line: #33333333;
+  --text-color-dark: #555;
+  --text-color-muted: #666;
+  --highlight-color: #fff;
+  --button-hover-color: #001f29;
+  --box-shadow-light: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  --box-shadow-heavy: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ------------------------------------------------------- RESET DO TEMA ------------------------------------------------------- */
+
+/* Remove margens e paddings padrões do tema para a página do plugin */
+body.local-catalogo .main-inner {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.local-catalogo #page.drawers,
+body.local-catalogo div[role="main"] {
+  padding: 0 !important;
+}
+
+/* Esconde e limpa a barra de navegação secundária e o cabeçalho */
+body.local-catalogo .secondary-navigation,
+body.local-catalogo #page-header {
+  display: none;
+}
+
+/* ------------------------------------------------------- ESTILOS GLOBAIS ------------------------------------------------------- */

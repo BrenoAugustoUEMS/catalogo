@@ -28,13 +28,13 @@
 
         <!-- Detalhes -->
         <div class="intropage-section">
-            <h3>Detalhes</h3>
+            <h3 class="intropage-title">Detalhes</h3>
             <p>{{summary}}</p>
         </div>
 
         <!-- Selos da ODS -->
         <div class="intropage-section">
-            <h3>Objetivos de Desenvolvimento Sustentável (ODS)</h3>
+            <h3 class="intropage-title">Objetivos de Desenvolvimento Sustentável (ODS)</h3>
             <div class="intropage-ods-badges">
                 {{#custom_fields.ods}}
                     <div class="ods-badge">
@@ -56,6 +56,7 @@
                 <span class="text-dark">Edital</span> <i class="fa-solid fa-newspaper text-dark"></i>
             </a>
             {{/custom_fields.edital}}
+
             {{^custom_fields.edital}}
             <div class="intropage-button bg-light border">
                 <span class="text-black-50">Edital Indisponível</span> <i class="fa-solid fa-newspaper text-black-50"></i>
@@ -63,9 +64,9 @@
             {{/custom_fields.edital}}
 
             {{#enrolment.button.url}}
-            <a href="{{enrolment.button.url}}" class="intropage-button">
-                <span>{{enrolment.button.text}}</span><i class="{{enrolment.button.icon}}"></i>
-            </a>
+                <a href="{{enrolment.button.url}}" class="intropage-button">
+                    <span>{{enrolment.button.text}}</span><i class="{{enrolment.button.icon}}"></i>
+                </a>
             {{/enrolment.button.url}}
         </div>
 
@@ -87,7 +88,7 @@
                 </div>
                 <div class="intropage-interest-tags">
                     {{#custom_fields.target}}
-                    <span class="catalogo-tag">{{.}}</span>
+                    <span class="intropage-tags">{{.}}</span>
                     {{/custom_fields.target}}
                 </div>
             </div>

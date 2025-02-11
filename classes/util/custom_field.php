@@ -61,4 +61,15 @@ class custom_field {
             return $num >= 1 && $num <= 17;
         });
     }
+
+    /**
+     * Obtém o valor do campo personalizado "edital_url" associado a um curso.
+     *
+     * @param int $courseid O ID do curso.
+     * @return string|null A URL do edital ou NULL se o campo não estiver configurado.
+     */
+    public static function get_edital_url(int $courseid): ?string {
+        $custom_fields = self::get_custom_fields($courseid, ['edital_url']);
+        return $custom_fields['edital_url'] ?? null;
+    }
 }

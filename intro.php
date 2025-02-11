@@ -11,7 +11,9 @@ $PAGE->set_context(context_course::instance($courseid));
 $PAGE->set_title('Introdução ao Curso');
 $PAGE->set_pagelayout('base');
 $PAGE->add_body_class('local-catalogo');
-$PAGE->requires->css('/local/catalogo/styles.css');
+$PAGE->requires->css('/local/catalogo/styles/global.css');
+$PAGE->requires->css('/local/catalogo/styles/intro.css'); // 🔹 Apenas para a introdução
+
 
 // Obtém os dados processados para o template (somente o curso específico)
 $data = local_catalogo_get_data_for_template(null, '', $courseid);

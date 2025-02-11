@@ -80,7 +80,7 @@ class course {
             $enrol_details = \local_catalogo\util\enrolment::get_enrolment_details($course->id);
 
             // 🔹 Obtém os campos personalizados "fluxo" e "target".
-            $custom_fields = \local_catalogo\util\custom_field::get_custom_fields($course->id, ['fluxo', 'target', 'ods']);
+            $custom_fields = \local_catalogo\util\custom_field::get_custom_fields($course->id, ['fluxo', 'target', 'ods', 'edital_url']);
 
             // 🔹 Processando "fluxo"
             $fluxo_value = isset($custom_fields['fluxo']) ? trim($custom_fields['fluxo']) : null;
@@ -106,6 +106,7 @@ class course {
                     'hastarget' => $hastarget,
                     'target' => $target_tags,
                     'ods' => $custom_fields['ods'] ?? null,
+                    'edital' => $custom_fields['edital_url'] ?? null,
                 ],
                 'baseurl' => (new \moodle_url('/local/catalogo'))->out(false),
                 'url' => (new \moodle_url('/course/view.php', ['id' => $course->id]))->out(false),

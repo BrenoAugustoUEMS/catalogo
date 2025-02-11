@@ -9,7 +9,9 @@ $PAGE->set_context(context_system::instance());
 $PAGE->set_title('Catálogo de Cursos');
 $PAGE->set_pagelayout('base');
 $PAGE->add_body_class('local-catalogo');
-$PAGE->requires->css('/local/catalogo/styles.css');
+$PAGE->requires->css('/local/catalogo/styles/global.css');
+$PAGE->requires->css('/local/catalogo/styles/catalogo.css'); // 🔹 Apenas para o catálogo
+
 
 // Obtém os parâmetros da URL.
 $search = optional_param('search', '', PARAM_RAW_TRIMMED);
