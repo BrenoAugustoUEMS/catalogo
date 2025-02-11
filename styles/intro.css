@@ -92,8 +92,8 @@
   color: var(--highlight-color);
   background: linear-gradient(
     135deg,
-    #057da6 0%,
-    #001f29 100%
+    #057da6bb 0%,
+    #001f29ee 100%
   ); /* Degradê com as cores do site */
   padding: 10px;
   border-radius: 50px;
@@ -184,47 +184,69 @@
 
 /* ---------------------------------------------------- BOTÃO NA SIDEBAR ------------------------------------------------------- */
 
+/* Estiliza a coleção de botões */
 .intropage-button-collection {
   display: flex;
   flex-direction: column;
+  align-items: center; /* Centraliza os botões horizontalmente */
   gap: 10px;
   margin-bottom: 20px;
 }
 
 /* Botão estilizado */
 .intropage-button {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  flex: 1;
-  justify-content: space-between;
-  min-height: 58px;
+  justify-content: center; /* Centraliza conteúdo */
+  gap: 10px; /* Espaçamento entre o ícone e o texto */
+  min-height: 50px;
   background-color: var(--primary-color-dark);
   color: var(--highlight-color) !important;
   font-weight: bold;
-  padding: 10px 15px;
+  padding: 12px 18px;
   text-decoration: none !important;
-  border-radius: 5px;
+  border-radius: 8px; /* Mais suavizado */
   transition: background-color 0.3s ease, transform 0.1s ease-in-out;
 }
 
-/* Ícones dentro do botão */
-.intropage-button i {
-  flex: 1;
-  font-size: 1.8em;
-  line-height: 1;
-  padding: 0;
+/* Botões na barra lateral devem ocupar 100% do espaço */
+.intropage-sidebar .intropage-button {
+  width: 100%;
+  min-height: 62px;
+  font-size: 1.1rem;
+  justify-content: space-between;
+  align-items: space-between;
+  flex-direction: row; /* Mantém alinhamento horizontal */
 }
 
-/* texto dentro do botão */
+/* Botão "Voltar ao Catálogo" mantém tamanho fixo */
+.intropage-back-button {
+  width: auto;
+  min-width: 180px; /* Define um tamanho mínimo */
+  padding: 12px 24px; /* Ajuste de padding */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ícone dentro do botão */
+.intropage-button i {
+  font-size: 1.4em; /* Tamanho ajustado */
+  padding: 0;
+  margin-right: 6px; /* Espaço entre ícone e texto */
+}
+
+/* Texto dentro do botão */
 .intropage-button span {
-  flex: 3;
   font-size: 1em;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 /* Botão: hover */
 .intropage-button:hover {
   background-color: var(--button-hover-color);
-  transform: scale(1.02);
+  transform: scale(1.05); /* Efeito de leve aumento */
 }
 
 .intropage-tags {

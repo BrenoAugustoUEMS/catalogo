@@ -62,6 +62,15 @@
                 {{/custom_fields.ods}}
             </div>
         </div>
+
+        <!-- Botão de voltar ao catálogo -->
+        <div class="intropage-button-collection">
+            <a href="{{baseurl}}/view.php" class="intropage-button intropage-back-button">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Voltar ao Catálogo</span>
+            </a>
+        </div>
+
     </div>
 
     <!-- SIDEBAR -->
@@ -69,19 +78,19 @@
         <div class="intropage-button-collection">
             {{#custom_fields.edital}}
             <a href="{{custom_fields.edital}}" class="intropage-button bg-light border" target="_blank">
-                <span class="text-dark">Edital</span> <i class="fa-solid fa-newspaper text-dark"></i>
+                <span class="text-dark">Edital</span> <i class="fa-solid fa-newspaper text-dark d-flex justify-content-end"></i>
             </a>
             {{/custom_fields.edital}}
 
             {{^custom_fields.edital}}
             <div class="intropage-button bg-light border">
-                <span class="text-black-50">Edital Indisponível</span> <i class="fa-solid fa-newspaper text-black-50"></i>
+                <span class="text-black-50">Edital Indisponível</span> <i class="fa-solid fa-newspaper text-black-50 d-flex justify-content-end"></i>
             </div>
             {{/custom_fields.edital}}
 
             {{#enrolment.button.url}}
                 <a href="{{enrolment.button.url}}" class="intropage-button">
-                    <span>{{enrolment.button.text}}</span><i class="{{enrolment.button.icon}}"></i>
+                    <span class="">{{enrolment.button.text}}</span><i class="{{enrolment.button.icon}} d-flex justify-content-end"></i>
                 </a>
             {{/enrolment.button.url}}
         </div>
