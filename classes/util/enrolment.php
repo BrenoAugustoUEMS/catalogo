@@ -41,16 +41,16 @@ class enrolment {
             'enrol' => 'self'
         ]);
 
-        $customformat = '%d/%m/%Y, %Hh%M';
+        $customformat = '%d/%m/%Y,  %Hh%M';
 
         return [
             'enrolstart' => (!empty($self_enrolment) && !empty($self_enrolment->enrolstartdate)) 
                 ? userdate($self_enrolment->enrolstartdate, $customformat) 
-                : null,
-            
+                : 'Data Indefinida', // 🔹 Se não houver data, exibe "Data indefinida"
+
             'enrolend' => (!empty($self_enrolment) && !empty($self_enrolment->enrolenddate)) 
                 ? userdate($self_enrolment->enrolenddate, $customformat) 
-                : null,
+                : 'Data Indefinida', // 🔹 Se não houver data, exibe "Data indefinida"
 
             'status' => (!empty($self_enrolment) && $self_enrolment->status == 0) ? 'Ativo' : 'Inativo',
             'self_enrol' => (!empty($self_enrolment) && $self_enrolment->status == 0),

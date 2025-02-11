@@ -66,6 +66,40 @@
   color: var(--primary-color-dark);
 }
 
+.intropage-item-dates-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  width: 100%;
+  text-align: center;
+  padding: 6px 8px;
+  background: linear-gradient(
+    135deg,
+    #057da620 0%,
+    #001f2920 100%
+  ); /* Degradê com as cores do site */
+  border-radius: 100px;
+  box-shadow: var(--box-shadow-heavy);
+}
+
+.intropage-date-continuous {
+  font-size: 1rem;
+  font-weight: 700;
+  width: 100%;
+  margin: 0;
+  color: var(--highlight-color);
+  background: linear-gradient(
+    135deg,
+    #057da6 0%,
+    #001f29 100%
+  ); /* Degradê com as cores do site */
+  padding: 10px;
+  border-radius: 50px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
 /* ---------------------------------------------------- SEÇÃO ODS ---------------------------------------------------- */
 
 /* Seção dos Selos da ODS */

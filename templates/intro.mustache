@@ -13,16 +13,32 @@
                     <strong>Inscrições:</strong>
                 </div>
 
-                <div class="d-flex flex-row flex-wrap intropage-enroll-date px-3 pt-3">
-                    <div class="d-flex align-items-center">
-                        <span class="text-muted mx-2 mb-2">De:</span>
-                        <strong class="h3 mr-5 text-nowrap">{{enrolment.enrolstart}}</strong>
+                {{#custom_fields.hasfluxo}}  <!-- Se hasfluxo for true (Fluxo Contínuo) -->
+                    <div class="intropage-item-dates-container">
+                        <p class="intropage-date-continuous"><strong>Fluxo Contínuo</strong></p>
                     </div>
-                    <div class="d-flex align-items-center">
-                        <span class="text-muted mx-2 mb-2">Até:</span>
-                        <strong class="h3">{{enrolment.enrolend}}</strong>
+
+                {{/custom_fields.hasfluxo}}
+
+                {{^custom_fields.hasfluxo}}  <!-- Se não for fluxo contínuo -->
+                    <!-- Período de inscrições -->
+                    <div class="d-flex flex-row flex-wrap intropage-enroll-date px-3 pt-3">
+                        <div class="d-flex align-items-center">
+                            <span class="text-muted mx-2 mb-2">De:</span>
+                            <strong class="h3 mr-5 text-nowrap">{{enrolment.enrolstart}}</strong>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <span class="text-muted mx-2 mb-2">Até:</span>
+                            <strong class="h3">{{enrolment.enrolend}}</strong>
+                        </div>
                     </div>
-                </div>
+
+                    <!-- Legenda -->
+                    <div class="intropage-legend text-muted fw-light mx-2">
+                        GMT-04 (Horário Padrão do MS)
+                    </div>
+                {{/custom_fields.hasfluxo}}
+
             </div>
         </div>
 
