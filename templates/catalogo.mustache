@@ -35,7 +35,7 @@
         </form>
 
         <!-- Formulário de filtro por categoria -->
-        <form method="get" action="{{baseurl}}" class="catalogo-filter-form">
+        <form method="get" action="{{baseurl}}/view.php" class="catalogo-filter-form">
             <label for="catalogo-category">Filtrar por Categoria:</label>
             <div class="catalogo-input-button-wrapper">
                 <select id="catalogo-category" name="category">
@@ -56,7 +56,7 @@
 
                 <!-- Botão Limpar Filtro -->
                 <button type="button" title="Limpar Filtro" class="catalogo-filter-button" 
-                        onclick="window.location.href='{{baseurl}}'">
+                        onclick="window.location.href='{{baseurl}}/view.php'">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>

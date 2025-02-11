@@ -28,6 +28,6 @@ function local_catalogo_get_data_for_template(?int $categoryfilter = null, ?stri
         'course_count' => $course_count,
         'categories' => $categories,
         'search_term' => $search,
-        'baseurl' => (new moodle_url('/local/catalogo/view.php'))->out(),
+        'baseurl' => (new moodle_url('/local/catalogo'))->out(),
     ];
 }

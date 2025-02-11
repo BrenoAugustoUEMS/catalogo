@@ -36,14 +36,14 @@
         <div class="intropage-section">
             <h3>Objetivos de Desenvolvimento Sustentável (ODS)</h3>
             <div class="intropage-ods-badges">
-                {{#customfields.ods}}
+                {{#custom_fields.ods}}
                     <div class="ods-badge">
-                        <img src="{{plugin.baseurl}}/pix/sdg/SDG-{{.}}.svg" alt="ODS {{.}}" class="ods-badge">
+                        <img src="{{baseurl}}/pix/sdg/SDG-{{.}}.svg" alt="ODS {{.}}" class="ods-badge">
                     </div>
-                {{/customfields.ods}}
-                {{^customfields.ods}}
+                {{/custom_fields.ods}}
+                {{^custom_fields.ods}}
                     <p>Nenhum ODS informado.</p>
-                {{/customfields.ods}}
+                {{/custom_fields.ods}}
             </div>
         </div>
     </div>
@@ -51,22 +51,22 @@
     <!-- SIDEBAR -->
     <div class="intropage-sidebar">
         <div class="intropage-button-collection">
-            {{#customfields.edital.url}}
-            <a href="{{customfields.edital.url}}" class="intropage-button bg-light border" target="_blank">
+            {{#custom_fields.edital}}
+            <a href="{{custom_fields.edital}}" class="intropage-button bg-light border" target="_blank">
                 <span class="text-dark">Edital</span> <i class="fa-solid fa-newspaper text-dark"></i>
             </a>
-            {{/customfields.edital.url}}
-            {{^customfields.edital.url}}
+            {{/custom_fields.edital}}
+            {{^custom_fields.edital}}
             <div class="intropage-button bg-light border">
                 <span class="text-black-50">Edital Indisponível</span> <i class="fa-solid fa-newspaper text-black-50"></i>
             </div>
-            {{/customfields.edital.url}}
+            {{/custom_fields.edital}}
 
-            {{#enrol.button.url}}
-            <a href="{{enrol.button.url}}" class="intropage-button">
-                <span>{{enrol.button.text}}</span><i class="{{enrol.button.icon}}"></i>
+            {{#enrolment.button.url}}
+            <a href="{{enrolment.button.url}}" class="intropage-button">
+                <span>{{enrolment.button.text}}</span><i class="{{enrolment.button.icon}}"></i>
             </a>
-            {{/enrol.button.url}}
+            {{/enrolment.button.url}}
         </div>
 
         <div class="intropage-section m-0">
@@ -77,6 +77,21 @@
                 </div>
                 <p class="intropage-info-text">{{category.path}}</p>
             </div>
+
+            <!-- Público-alvo -->
+            {{#custom_fields.hastarget}}
+            <div class="intropage-info-item">
+                <div class="intropage-info-header">
+                    <i class="fa-solid fa-users"></i>
+                    <strong>Público-Alvo:</strong>
+                </div>
+                <div class="intropage-interest-tags">
+                    {{#custom_fields.target}}
+                    <span class="catalogo-tag">{{.}}</span>
+                    {{/custom_fields.target}}
+                </div>
+            </div>
+            {{/custom_fields.hastarget}}
         </div>
     </div>
 </div>
