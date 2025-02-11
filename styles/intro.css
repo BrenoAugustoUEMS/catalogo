@@ -221,7 +221,7 @@
 
 /* Botão "Voltar ao Catálogo" mantém tamanho fixo */
 .intropage-back-button {
-  width: auto;
+  max-width: 180px;
   min-width: 180px; /* Define um tamanho mínimo */
   padding: 12px 24px; /* Ajuste de padding */
   display: inline-flex;
@@ -272,7 +272,22 @@
 
 /* ----------------------------------------------------- RESPONSIVIDADE ------------------------------------------------------- */
 
-/* Empilha as colunas em telas menores */
+/* 🔹 Smartphones Médios (até 480px) */
+@media (max-width: 480px) {
+  .intropage-sidebar .intropage-button {
+    width: 50%;
+  }
+
+  .intropage-big-word {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+    font-size: 0.6em !important;
+  }
+}
+
+/* 🔹 Smartphones Grandes (até 768px) */
 @media (max-width: 768px) {
   .intropage-content {
     flex-direction: column-reverse;
@@ -285,5 +300,9 @@
 
   .intropage-button-collection {
     flex-direction: row;
+  }
+
+  .intropage-big-word {
+    font-size: 0.8em;
   }
 }
