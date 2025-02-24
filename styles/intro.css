@@ -84,20 +84,67 @@
   box-shadow: var(--box-shadow-heavy);
 }
 
+.intropage-date-continuous-card {
+  width: 100%;
+  background: var(--primary-color-darker);
+  padding: 0.6rem;
+  border-radius: 60px;
+  z-index: 1;
+}
+
 .intropage-date-continuous {
+  position: relative;
   font-size: 1rem;
   font-weight: 700;
-  width: 100%;
-  margin: 0;
+  width: 300px;
+  margin: 0 auto;
   color: var(--highlight-color);
-  background: linear-gradient(
-    135deg,
-    #057da6bb 0%,
-    #001f29ee 100%
-  ); /* Degradê com as cores do site */
-  padding: 10px;
-  border-radius: 50px;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  background: #333;
+  padding: 0.4rem;
+  text-align: center;
+  border-radius: 60px;
+  z-index: 1;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.intropage-date-continuous::after,
+.intropage-date-continuous::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(
+    from var(--angle),
+    var(--primary-color-darker),
+    var(--primary-color-dark),
+    var(--primary-color-darker)
+  );
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -2;
+  padding: 2px;
+  border-radius: 60px;
+  animation: 3s spin linear infinite;
+}
+
+.intropage-date-continuous::before {
+  filter: blur(0.6rem);
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+
+  to {
+    --angle: 360deg;
+  }
 }
 
 /* ---------------------------------------------------- SEÇÃO ODS ---------------------------------------------------- */
