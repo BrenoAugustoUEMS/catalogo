@@ -84,6 +84,7 @@
   box-shadow: var(--box-shadow-heavy);
 }
 
+/* Container do cartão */
 .intropage-date-continuous-card {
   width: 100%;
   background: var(--primary-color-darker);
@@ -92,6 +93,7 @@
   z-index: 1;
 }
 
+/* Estilo do texto e do efeito */
 .intropage-date-continuous {
   position: relative;
   font-size: 1rem;
@@ -106,47 +108,48 @@
   z-index: 1;
 }
 
+/* Propriedade personalizada para rotação */
 @property --angle {
   syntax: "<angle>";
   initial-value: 0deg;
   inherits: false;
 }
 
+/* Efeito animado ao redor */
 .intropage-date-continuous::after,
 .intropage-date-continuous::before {
   content: "";
   position: absolute;
   height: 100%;
   width: 100%;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  border-radius: 60px;
   background-image: conic-gradient(
     from var(--angle),
     var(--primary-color-darker),
     var(--primary-color-dark),
     var(--primary-color-darker)
   );
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  z-index: -2;
-  padding: 2px;
-  border-radius: 60px;
-  animation: 3s spin linear infinite;
+  animation: spin 5s linear infinite;
 }
 
+/* Brilho difuso ao redor */
 .intropage-date-continuous::before {
   filter: blur(0.6rem);
 }
 
+/* Animação do gradiente girando */
 @keyframes spin {
   from {
     --angle: 0deg;
   }
-
   to {
     --angle: 360deg;
   }
 }
-
 /* ---------------------------------------------------- SEÇÃO ODS ---------------------------------------------------- */
 
 /* Seção dos Selos da ODS */
