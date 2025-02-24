@@ -357,20 +357,72 @@ option:not(.catalogo-category-parent) {
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* 🔄 Estilo específico para "Fluxo Contínuo" */
+/* Container do cartão */
+.catalogo-date-continuous-card {
+  width: 100%;
+  background: var(--primary-color-darker);
+  padding: 0.6rem;
+  border-radius: 60px;
+  z-index: 1;
+}
+
+/* Estilo do texto e do efeito */
 .catalogo-date-continuous {
+  position: relative;
   font-size: 1rem;
   font-weight: 700;
-  margin: 0;
+  width: fit-content;
+  margin: 0 auto;
   color: var(--highlight-color);
-  background: linear-gradient(
-    135deg,
-    #057da6 0%,
-    #001f29 100%
-  ); /* Degradê com as cores do site */
-  padding: 10px;
-  border-radius: 50px;
-  box-shadow: var(--box-shadow-heavy);
+  background: #333;
+  padding: 0.4rem;
+  text-align: center;
+  border-radius: 60px;
+  z-index: 1;
+}
+
+/* Propriedade personalizada para rotação */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* Efeito animado ao redor */
+.catalogo-date-continuous::after,
+.catalogo-date-continuous::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  border-radius: 60px;
+  background-image: conic-gradient(
+    from var(--angle),
+    var(--primary-color-darker),
+    var(--primary-color-dark),
+    var(--primary-color-darker)
+  );
+  animation: spin 5s linear infinite;
+}
+
+/* Brilho difuso ao redor */
+.catalogo-date-continuous::before {
+  filter: blur(1rem);
+  opacity: 50%;
+}
+
+/* Animação do gradiente girando */
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
 }
 
 /* Estilo do botão */
