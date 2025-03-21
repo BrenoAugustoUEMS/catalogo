@@ -120,7 +120,7 @@ class category {
             310 => 'P-PP.png',
             306 => 'EX-PEX.png',
             308 => 'EX-CUR.png',
-            307 => 'EX-CEL',
+            307 => 'EX-CEL.png',
             312 => 'EN-E.png',
             313 => 'EN-PEN.png',
             314 => 'EN-PIM.png',
